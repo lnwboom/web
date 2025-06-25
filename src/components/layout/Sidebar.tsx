@@ -4,6 +4,7 @@ import React, { ReactNode, useContext, createContext } from "react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 // ไอคอนสำหรับเมนู
 const HomeIcon = () => (
@@ -155,23 +156,6 @@ const MenuIcon = () => (
       strokeLinejoin="round"
       strokeWidth={2}
       d="M4 6h16M4 12h16M4 18h16"
-    />
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg
-    className="w-6 h-6"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M6 18L18 6M6 6l12 12"
     />
   </svg>
 );
@@ -377,7 +361,7 @@ const MobileNavigation: React.FC<{
           <div className="flex-1 overflow-y-auto">
             <div className="p-6">
               <ul className="space-y-2">
-                {menuItems.map((item, index) => (
+                {menuItems.map((item) => (
                   <li key={item.name}>
                     {item.subItems ? (
                       <div>
@@ -409,7 +393,7 @@ const MobileNavigation: React.FC<{
                           }`}
                         >
                           <ul className="ml-12 mt-2 space-y-2">
-                            {item.subItems.map((subItem, subIndex) => (
+                            {item.subItems.map((subItem) => (
                               <li key={subItem.path}>
                                 <Link
                                   href={subItem.path}

@@ -14,7 +14,7 @@ export async function PUT(req: NextRequest) {
   }
   const token = authHeader.split(' ')[1];
   try {
-    const decoded: any = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET) as { userId: string };
     const { currentPassword, newPassword } = await req.json();
     const user = await User.findById(decoded.userId);
     if (!user) {
@@ -27,7 +27,7 @@ export async function PUT(req: NextRequest) {
     user.password = await bcrypt.hash(newPassword, 10);
     await user.save();
     return NextResponse.json({ message: 'Password updated successfully' }, { status: 200 });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 });
   }
 } 

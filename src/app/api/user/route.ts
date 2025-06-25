@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import User from '@/models/User';
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'changeme';
 
@@ -14,13 +13,13 @@ export async function GET(req: NextRequest) {
   }
   const token = authHeader.split(' ')[1];
   try {
-    const decoded: any = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET) as { userId: string };
     const user = await User.findById(decoded.userId).select('-password');
     if (!user) {
       return NextResponse.json({ message: 'User not found' }, { status: 404 });
     }
     return NextResponse.json({ user, preTestScore: user.preTestScore, postTestScore: user.postTestScore }, { status: 200 });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 });
   }
 }
@@ -33,7 +32,7 @@ export async function PUT(req: NextRequest) {
   }
   const token = authHeader.split(' ')[1];
   try {
-    const decoded: any = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET) as { userId: string };
     const { name, email, profileImage } = await req.json();
     const user = await User.findById(decoded.userId);
     if (!user) {
@@ -44,7 +43,7 @@ export async function PUT(req: NextRequest) {
     user.profileImage = profileImage || user.profileImage;
     await user.save();
     return NextResponse.json({ message: 'User updated successfully' }, { status: 200 });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 });
   }
 }
@@ -57,7 +56,7 @@ export async function POST(req: NextRequest) {
   }
   const token = authHeader.split(' ')[1];
   try {
-    const decoded: any = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET) as { userId: string };
     const { type, score } = await req.json(); // type: 'pre' | 'post'
     let update = {};
     if (type === 'pre') {
@@ -75,8 +74,7 @@ export async function POST(req: NextRequest) {
     }
     const userWithScores = await User.findById(decoded.userId);
     return NextResponse.json({ message: 'Score saved successfully', user: userWithScores }, { status: 200 });
-  } catch (err) {
-    console.error('Error saving score:', err);
+  } catch {
     return NextResponse.json({ message: 'Invalid token or server error' }, { status: 401 });
   }
 } 

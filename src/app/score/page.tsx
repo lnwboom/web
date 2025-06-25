@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
+
 import useAuthGuard from "@/hooks/useAuthGuard";
 
 interface TestScore {

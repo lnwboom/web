@@ -242,7 +242,6 @@ export default function PretestPage() {
     Array(questions.length).fill(-1)
   );
   const [showResults, setShowResults] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(30 * 60); // 30 นาที
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [preTestScore, setPreTestScore] = useState<number | null>(null);
   const [postTestScore, setPostTestScore] = useState<number | null>(null);
@@ -310,15 +309,6 @@ export default function PretestPage() {
     });
     setShowResults(true);
     setIsSubmitting(false);
-  };
-
-  // แปลงเวลาเป็นรูปแบบ mm:ss
-  const formatTime = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
-      .toString()
-      .padStart(2, "0")}`;
   };
 
   // ตรวจสอบว่าตอบครบทุกข้อหรือยัง
@@ -407,11 +397,8 @@ export default function PretestPage() {
 
   return (
     <div className="max-w-3xl mx-auto my-12 p-8 bg-white rounded-lg shadow-md">
-      <div className="flex justify-between items-center mb-6">
+      <div className="mb-6">
         <h1 className="text-2xl font-bold">แบบทดสอบก่อนเรียน</h1>
-        <div className="text-lg font-medium">
-          เวลา: <span className="text-red-600">{formatTime(timeLeft)}</span>
-        </div>
       </div>
 
       <div className="mb-6 bg-gray-100 p-4 rounded-lg">
