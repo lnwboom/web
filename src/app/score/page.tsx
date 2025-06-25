@@ -2,12 +2,37 @@
 
 import useAuthGuard from "@/hooks/useAuthGuard";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import Link from "next/link";
 
 export default function ScorePage() {
   const { user, loading } = useAuthGuard();
 
   if (loading) return <LoadingSpinner text="กำลังโหลดคะแนน..." />;
   if (!user) return null;
+
+  // ถ้าเป็น admin แสดงลิงก์ไปหน้า admin
+  if (user.role === "admin") {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen py-12">
+        <div className="w-full max-w-2xl rounded-xl shadow-lg p-8">
+          <h1 className="text-3xl font-bold mb-6 text-blue-800 text-center">
+            จัดการคะแนนผู้ใช้
+          </h1>
+          <div className="text-center space-y-4">
+            <p className="text-lg text-gray-600">
+              คุณเป็นผู้ดูแลระบบ สามารถดูและแก้ไขคะแนนของผู้ใช้ทั้งหมดได้
+            </p>
+            <Link
+              href="/admin/scores"
+              className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium"
+            >
+              ไปยังหน้าจัดการคะแนน
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // ดึงคะแนน preTestScore และ postTestScore จาก user
   const preTestScore = user.preTestScore;

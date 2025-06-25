@@ -126,6 +126,23 @@ const CreatorIcon = () => (
   </svg>
 );
 
+const AdminIcon = () => (
+  <svg
+    className="w-5 h-5"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+    />
+  </svg>
+);
+
 const LoginIcon = () => (
   <svg
     className="w-5 h-5"
@@ -295,6 +312,7 @@ const MobileNavigation: React.FC<{
   const [userInfo, setUserInfo] = useState<{
     name?: string;
     email?: string;
+    role?: string;
   } | null>(null);
 
   useEffect(() => {
@@ -302,7 +320,11 @@ const MobileNavigation: React.FC<{
       const token = localStorage.getItem("token");
       if (token) {
         const decoded = decodeToken(token);
-        setUserInfo({ name: decoded?.name, email: decoded?.email });
+        setUserInfo({
+          name: decoded?.name,
+          email: decoded?.email,
+          role: decoded?.role,
+        });
       }
     } else {
       setUserInfo(null);
@@ -467,6 +489,47 @@ const MobileNavigation: React.FC<{
                     )}
                   </li>
                 ))}
+                {/* Admin menu items - only show for admin users */}
+                {userInfo?.role === "admin" && (
+                  <>
+                    <li>
+                      <Link
+                        href="/admin/scores"
+                        className={`flex items-center py-4 px-6 rounded-xl transition-all duration-200 group transform hover:translate-x-2 ${
+                          pathname === "/admin/scores"
+                            ? "bg-blue-600 text-white font-medium border-l-4 border-white"
+                            : "text-white hover:bg-blue-700 hover:text-blue-100"
+                        }`}
+                        onClick={closeSidebar}
+                      >
+                        <span className="transition-colors duration-200 text-blue-200 group-hover:text-blue-100">
+                          <AdminIcon />
+                        </span>
+                        <span className="ml-4 font-medium text-lg">
+                          จัดการคะแนน
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/admin/users"
+                        className={`flex items-center py-4 px-6 rounded-xl transition-all duration-200 group transform hover:translate-x-2 ${
+                          pathname === "/admin/users"
+                            ? "bg-blue-600 text-white font-medium border-l-4 border-white"
+                            : "text-white hover:bg-blue-700 hover:text-blue-100"
+                        }`}
+                        onClick={closeSidebar}
+                      >
+                        <span className="transition-colors duration-200 text-blue-200 group-hover:text-blue-100">
+                          <CreatorIcon />
+                        </span>
+                        <span className="ml-4 font-medium text-lg">
+                          จัดการผู้ใช้
+                        </span>
+                      </Link>
+                    </li>
+                  </>
+                )}
                 {/* Profile bar: only show if logged in */}
                 {isLoggedIn && (
                   <li>
@@ -556,6 +619,7 @@ const DesktopSidebar: React.FC<
   const [userInfo, setUserInfo] = useState<{
     name?: string;
     email?: string;
+    role?: string;
   } | null>(null);
 
   useEffect(() => {
@@ -563,7 +627,11 @@ const DesktopSidebar: React.FC<
       const token = localStorage.getItem("token");
       if (token) {
         const decoded = decodeToken(token);
-        setUserInfo({ name: decoded?.name, email: decoded?.email });
+        setUserInfo({
+          name: decoded?.name,
+          email: decoded?.email,
+          role: decoded?.role,
+        });
       }
     } else {
       setUserInfo(null);
@@ -684,6 +752,41 @@ const DesktopSidebar: React.FC<
               )}
             </li>
           ))}
+          {/* Admin menu items - only show for admin users */}
+          {userInfo?.role === "admin" && (
+            <>
+              <li>
+                <Link
+                  href="/admin/scores"
+                  className={`flex items-center px-4 py-3 my-1 rounded-lg transition-colors duration-200 ${
+                    pathname === "/admin/scores"
+                      ? "bg-blue-600 text-white shadow"
+                      : "hover:bg-blue-700 text-white"
+                  } ${!isSidebarOpen && "justify-center"}`}
+                >
+                  <span className="mr-3">
+                    <AdminIcon />
+                  </span>
+                  {isSidebarOpen && <span>จัดการคะแนน</span>}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/admin/users"
+                  className={`flex items-center px-4 py-3 my-1 rounded-lg transition-colors duration-200 ${
+                    pathname === "/admin/users"
+                      ? "bg-blue-600 text-white shadow"
+                      : "hover:bg-blue-700 text-white"
+                  } ${!isSidebarOpen && "justify-center"}`}
+                >
+                  <span className="mr-3">
+                    <CreatorIcon />
+                  </span>
+                  {isSidebarOpen && <span>จัดการผู้ใช้</span>}
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
 

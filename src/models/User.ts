@@ -5,6 +5,7 @@ export interface IUser extends Document {
   email: string;
   password: string;
   profileImage?: string;
+  role: 'user' | 'admin';
   preTestScore?: {
     score: number;
     date: Date;
@@ -20,6 +21,7 @@ const UserSchema: Schema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   profileImage: { type: String, default: '' },
+  role: { type: String, enum: ['user', 'admin'], default: 'user' },
   preTestScore: {
     score: { type: Number },
     date: { type: Date },

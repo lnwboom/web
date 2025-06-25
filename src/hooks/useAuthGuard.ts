@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 export interface User {
   name: string;
   email: string;
+  role: 'user' | 'admin';
   profileImage?: string;
   preTestScore?: {
     score: number;

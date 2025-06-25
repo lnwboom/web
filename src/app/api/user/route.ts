@@ -18,7 +18,16 @@ export async function GET(req: NextRequest) {
     if (!user) {
       return NextResponse.json({ message: 'User not found' }, { status: 404 });
     }
-    return NextResponse.json({ user, preTestScore: user.preTestScore, postTestScore: user.postTestScore }, { status: 200 });
+    return NextResponse.json({ 
+      user: {
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        profileImage: user.profileImage,
+        preTestScore: user.preTestScore,
+        postTestScore: user.postTestScore
+      }
+    }, { status: 200 });
   } catch {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 });
   }
