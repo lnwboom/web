@@ -29,3 +29,34 @@ body {
 html, body {
   font-family: 'Prompt', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
 }
+
+/* Custom animations for loading spinner */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+/* Custom battery loading animation */
+@keyframes battery-charge {
+  0% {
+    height: 0%;
+  }
+  50% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}
+
+.animate-battery-charge {
+  animation: battery-charge 2s ease-in-out infinite;
+}

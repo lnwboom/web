@@ -66,7 +66,7 @@ export default function LayoutClient({ children }: { children: ReactNode }) {
 
   return (
     <AuthProvider>
-      <div className="min-h-screen bg-gray-50">
+      <div className="h-screen overflow-y-auto bg-gray-50">
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           isMobile={isMobile}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import useAuthGuard from "@/hooks/useAuthGuard";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 // Helper to decode JWT payload (no verify, just decode)
 function decodeToken(token: string) {
@@ -332,7 +333,7 @@ export default function PretestPage() {
 
   // ตรวจสอบว่าตอบครบทุกข้อหรือยัง
   const allQuestionsAnswered = selectedAnswers.every((answer) => answer !== -1);
-  if (loading) return <div>กำลังโหลด...</div>;
+  if (loading) return <LoadingSpinner text="กำลังโหลดแบบทดสอบ..." />;
   if (!user) return null;
   if (showResults) {
     const score = calculateScore();
@@ -495,7 +496,14 @@ export default function PretestPage() {
             disabled={!allQuestionsAnswered || isSubmitting}
             className="px-6 py-2 bg-green-600 text-white rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isSubmitting ? "กำลังส่ง..." : "ส่งคำตอบ"}
+            {isSubmitting ? (
+              <div className="flex items-center">
+                <LoadingSpinner size="sm" text="" className="p-0 mr-2" />
+                กำลังส่ง...
+              </div>
+            ) : (
+              "ส่งคำตอบ"
+            )}
           </button>
         ) : (
           <button

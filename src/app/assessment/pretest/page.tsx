@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import PretestClient from "./PretestClient";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function PretestPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoadingSpinner text="กำลังโหลด..." />}>
       <PretestClient />
     </Suspense>
   );

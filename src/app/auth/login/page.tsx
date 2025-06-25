@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { setToken } from "@/hooks/useAuthGuard";
 
+
 export default function LoginPage() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -128,7 +129,13 @@ export default function LoginPage() {
           disabled={isLoading}
           className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition disabled:opacity-50"
         >
-          {isLoading ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
+          {isLoading ? (
+            <div className="flex items-center justify-center">
+              กำลังเข้าสู่ระบบ...
+            </div>
+          ) : (
+            "เข้าสู่ระบบ"
+          )}
         </button>
       </form>
 

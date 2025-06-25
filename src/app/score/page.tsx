@@ -1,11 +1,12 @@
 "use client";
 
 import useAuthGuard from "@/hooks/useAuthGuard";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function ScorePage() {
   const { user, loading } = useAuthGuard();
 
-  if (loading) return <div>กำลังโหลด...</div>;
+  if (loading) return <LoadingSpinner text="กำลังโหลดคะแนน..." />;
   if (!user) return null;
 
   // ดึงคะแนน preTestScore และ postTestScore จาก user

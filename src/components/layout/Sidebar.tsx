@@ -706,6 +706,7 @@ const DesktopSidebar: React.FC<
                 </span>
                 {isSidebarOpen && (
                   <span>
+                    โปรไฟล์
                     {userInfo && (
                       <span className="block text-xs text-blue-100 font-normal">
                         {userInfo.name || "-"}
@@ -735,7 +736,9 @@ const DesktopSidebar: React.FC<
             </li>
           ))}
           <li>
-            <div className={`px-2 ${!isSidebarOpen && "flex justify-center"}`}>
+            <div
+              className={`px-2 mt-4 ${!isSidebarOpen && "flex justify-center"}`}
+            >
               {/* Login/Logout Button */}
               {isLoggedIn ? (
                 <button
@@ -744,17 +747,25 @@ const DesktopSidebar: React.FC<
                     setIsLoggedIn(false);
                     window.location.href = "/auth/login";
                   }}
-                  className="flex items-center justify-center w-full px-6 py-4 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 text-lg"
+                  className={`flex items-center justify-center w-full px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-200 font-medium shadow-md hover:shadow-lg ${
+                    isSidebarOpen ? "text-sm" : "text-xs"
+                  }`}
                 >
-                  <span className="ml-3">ออกจากระบบ</span>
+                  <span className={`${isSidebarOpen ? "ml-2" : ""}`}>
+                    {isSidebarOpen ? "ออกจากระบบ" : "ออก"}
+                  </span>
                 </button>
               ) : (
                 <Link
                   href="/auth/login"
-                  className="flex items-center justify-center w-full px-6 py-4 bg-white text-blue-700 rounded-xl hover:bg-blue-50 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 text-lg"
+                  className={`flex items-center justify-center w-full px-4 py-3 bg-white text-blue-700 rounded-lg hover:bg-blue-50 transition-all duration-200 font-medium shadow-md hover:shadow-lg ${
+                    isSidebarOpen ? "text-sm" : "text-xs"
+                  }`}
                 >
-                  <LoginIcon />
-                  <span className="ml-3">เข้าสู่ระบบ</span>
+                  {isSidebarOpen && <LoginIcon />}
+                  <span className={`${isSidebarOpen ? "ml-2" : ""}`}>
+                    {isSidebarOpen ? "เข้าสู่ระบบ" : "เข้า"}
+                  </span>
                 </Link>
               )}
             </div>

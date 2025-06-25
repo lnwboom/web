@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 import useAuthGuard from "@/hooks/useAuthGuard";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function ProfilePage() {
   const { user, loading } = useAuthGuard();
@@ -22,7 +23,7 @@ export default function ProfilePage() {
   });
   const [message, setMessage] = useState("");
 
-  if (loading) return <div>กำลังโหลด...</div>;
+  if (loading) return <LoadingSpinner text="กำลังโหลดโปรไฟล์..." />;
   if (!user) return null;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,6 +90,16 @@ export default function ProfilePage() {
     return /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(url);
   }
 
+  // ตรวจสอบว่าเป็น external URL หรือไม่
+  function isExternalUrl(url: string) {
+    try {
+      const urlObj = new URL(url);
+      return urlObj.protocol === "http:" || urlObj.protocol === "https:";
+    } catch {
+      return false;
+    }
+  }
+
   return (
     <div className="space-y-6">
       <section className="bg-blue-50 p-6 rounded-lg">
@@ -130,12 +141,33 @@ export default function ProfilePage() {
                     <div className="relative w-32 h-32 rounded-full overflow-hidden bg-gray-200 mb-4">
                       {formData.profileImage &&
                       isValidImageUrl(formData.profileImage) ? (
-                        <Image
-                          src={formData.profileImage}
-                          alt="Profile"
-                          fill
-                          className="object-cover"
-                        />
+                        <>
+                          <Image
+                            src={formData.profileImage}
+                            alt="Profile"
+                            fill
+                            className="object-cover"
+                            unoptimized={isExternalUrl(formData.profileImage)}
+                            onError={(e) => {
+                              // ถ้าโหลดรูปไม่สำเร็จ ให้แสดง fallback
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = "none";
+                              const parent = target.parentElement;
+                              if (parent) {
+                                const fallback = parent.querySelector(
+                                  ".fallback"
+                                ) as HTMLElement;
+                                if (fallback) fallback.style.display = "flex";
+                              }
+                            }}
+                          />
+                          <div
+                            className="fallback absolute inset-0 flex items-center justify-center"
+                            style={{ display: "none" }}
+                          >
+                            <span className="text-4xl text-gray-400">👤</span>
+                          </div>
+                        </>
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
                           <span className="text-4xl text-gray-400">👤</span>
@@ -199,7 +231,12 @@ export default function ProfilePage() {
                           value={formData.profileImage}
                           onChange={handleChange}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          placeholder="https://example.com/image.jpg"
                         />
+                        <p className="text-xs text-gray-500 mt-1">
+                          ตัวอย่าง: https://picsum.photos/200/200,
+                          https://via.placeholder.com/200x200
+                        </p>
                       </div>
                       <div className="flex justify-end space-x-3">
                         <button

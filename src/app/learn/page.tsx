@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import useAuthGuard from "@/hooks/useAuthGuard";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 interface VideoItem {
   id: string;
@@ -15,7 +16,7 @@ const Chapter1Page = () => {
   const { user, loading } = useAuthGuard();
 
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
-  if (loading) return <div>กำลังโหลด...</div>;
+  if (loading) return <LoadingSpinner text="กำลังโหลดบทเรียน..." />;
   if (!user) return null;
 
   const videos: VideoItem[] = [
@@ -87,7 +88,9 @@ const Chapter1Page = () => {
             {selectedVideo
               ? (() => {
                   const idx = videos.findIndex((v) => v.id === selectedVideo);
-                  const title = videos.find((v) => v.id === selectedVideo)?.title;
+                  const title = videos.find(
+                    (v) => v.id === selectedVideo
+                  )?.title;
                   return idx !== -1 && title
                     ? `บทที่ ${idx + 1} ${title}`
                     : title;
