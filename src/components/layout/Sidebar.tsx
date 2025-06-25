@@ -4,6 +4,7 @@ import React, { ReactNode, useContext, createContext } from "react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 // ไอคอนสำหรับเมนู
 const HomeIcon = () => (
@@ -315,7 +316,13 @@ const MobileNavigation: React.FC<{
       {/* Mobile Header */}
       <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-50 h-16 shadow-lg">
         <Link href="/" className="text-xl font-bold flex items-center">
-          <img src="/images/battery.png" alt="Logo" className="h-8 mr-2" />
+          <Image
+            src="/images/battery.png"
+            alt="Logo"
+            width={32}
+            height={32}
+            className="h-8 mr-2"
+          />
           <span className="hidden sm:block">แบตเตอรี่ไฟฟ้า</span>
           <span className="sm:hidden">แบตเตอรี่</span>
         </Link>
@@ -520,7 +527,13 @@ const DesktopSidebar: React.FC<
       >
         {isSidebarOpen && (
           <div className="flex items-center">
-            <img src="/images/battery.png" alt="Logo" className="h-8 mr-2" />
+            <Image
+              src="/images/battery.png"
+              alt="Logo"
+              width={32}
+              height={32}
+              className="h-8 mr-2"
+            />
             <Link href="/" className="text-xl font-bold">
               แบตเตอรี่ไฟฟ้า
             </Link>

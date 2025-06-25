@@ -1,9 +1,23 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+export interface User {
+  name: string;
+  email: string;
+  profileImage?: string;
+  preTestScore?: {
+    score: number;
+    date: string;
+  };
+  postTestScore?: {
+    score: number;
+    date: string;
+  };
+}
+
 export default function useAuthGuard() {
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
