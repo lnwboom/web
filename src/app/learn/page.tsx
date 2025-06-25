@@ -85,8 +85,14 @@ const Chapter1Page = () => {
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
             {selectedVideo
-              ? videos.find((v) => v.id === selectedVideo)?.title
-              : "บทที่ 1: ความรู้พื้นฐานการทำงานกับแบตเตอรี่ไฟฟ้าแรงดันสูง"}
+              ? (() => {
+                  const idx = videos.findIndex((v) => v.id === selectedVideo);
+                  const title = videos.find((v) => v.id === selectedVideo)?.title;
+                  return idx !== -1 && title
+                    ? `บทที่ ${idx + 1} ${title}`
+                    : title;
+                })()
+              : "กรุณาเลือกบทเรียน"}
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             {selectedVideo

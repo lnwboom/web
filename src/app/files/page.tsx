@@ -7,8 +7,6 @@ interface FileItem {
   id: number;
   name: string;
   type: "pdf" | "video" | "image" | "doc";
-  size: string;
-  date: string;
   url: string;
   description: string;
   module?: number;
@@ -16,116 +14,99 @@ interface FileItem {
 }
 
 export default function FilesPage() {
-  const [activeTab, setActiveTab] = useState<"all" | "documents" | "videos">("all");
+  const [activeTab, setActiveTab] = useState<"all" | "documents" | "videos">(
+    "all"
+  );
   const [searchQuery, setSearchQuery] = useState("");
 
   // ข้อมูลไฟล์
   const files: FileItem[] = [
     {
-      id: 1,
-      name: "มาตรฐานอาชีพและคุณวุฒิวิชาชีพ - ช่างเทคนิคประกอบแบตเตอรี่แรงดันสูง.pdf",
-      type: "pdf",
-      size: "536 KB",
-      date: "19/05/2025",
-      url: "/files/Doc.pdf",
-      description: "เอกสารมาตรฐานอาชีพและคุณวุฒิวิชาชีพ สาขาวิชาชีพผลิตชิ้นส่วนยานยนต์ สาขายานยนต์ไฟฟ้า อาชีพช่างเทคนิคประกอบแบตเตอรี่แรงดันสูง",
-      module: 1,
-    },
-    {
       id: 2,
       name: "อุปกรณ์ป้องกันส่วนบุคคล.mp4",
       type: "video",
-      size: "234.6 MB",
-      date: "19/05/2025",
       url: "https://drive.google.com/file/d/1BAZhYBTAtMwduH-EbEgb9j2H1L4BXrjF/preview",
-      description: "เรียนรู้เกี่ยวกับอุปกรณ์ป้องกันส่วนบุคคลที่จำเป็นสำหรับการทำงานกับแบตเตอรี่ไฟฟ้าแรงดันสูง",
+      description:
+        "เรียนรู้เกี่ยวกับอุปกรณ์ป้องกันส่วนบุคคลที่จำเป็นสำหรับการทำงานกับแบตเตอรี่ไฟฟ้าแรงดันสูง",
       module: 1,
-      duration: "15:30"
+      duration: "7:15",
     },
     {
       id: 3,
       name: "เครื่องมือและอุปกรณ์วัดทางไฟฟ้า.mp4",
       type: "video",
-      size: "156 MB",
-      date: "19/05/2025",
       url: "https://drive.google.com/file/d/12gfVG1nGILgZQI25YtcXzWnW6Py7rCTE/preview",
-      description: "แนะนำเครื่องมือและอุปกรณ์วัดทางไฟฟ้าที่ใช้ในการทำงานกับแบตเตอรี่ รวมถึงวิธีการใช้งานที่ถูกต้อง",
+      description:
+        "แนะนำเครื่องมือและอุปกรณ์วัดทางไฟฟ้าที่ใช้ในการทำงานกับแบตเตอรี่ รวมถึงวิธีการใช้งานที่ถูกต้อง",
       module: 1,
-      duration: "12:45"
+      duration: "3:53",
     },
     {
       id: 4,
       name: "การจัดการพื้นที่ปฏิบัติงาน.mp4",
       type: "video",
-      size: "78.2 MB",
-      date: "19/05/2025",
       url: "https://drive.google.com/file/d/1N7xnmKrVWRNWpbTL7mBU1n4QTamaYMeW/preview",
-      description: "วิธีการจัดการพื้นที่ปฏิบัติงานให้ปลอดภัยและมีประสิทธิภาพสำหรับการทำงานกับแบตเตอรี่",
+      description:
+        "วิธีการจัดการพื้นที่ปฏิบัติงานให้ปลอดภัยและมีประสิทธิภาพสำหรับการทำงานกับแบตเตอรี่",
       module: 1,
-      duration: "8:20"
+      duration: "2:31",
     },
     {
       id: 5,
       name: "ทดสอบความจุของเซลล์แบตเตอรี่.mp4",
       type: "video",
-      size: "120.8 MB",
-      date: "19/05/2025",
       url: "https://drive.google.com/file/d/1rVndMG9bBm8miNqG3qRvwiY-cbizbnIe/preview",
-      description: "ขั้นตอนการทดสอบความจุของเซลล์แบตเตอรี่อย่างถูกต้องและปลอดภัย",
+      description:
+        "ขั้นตอนการทดสอบความจุของเซลล์แบตเตอรี่อย่างถูกต้องและปลอดภัย",
       module: 1,
-      duration: "10:15"
+      duration: "5:36",
     },
     {
       id: 6,
       name: "การคัดเลือกเซลล์แบตเตอรี่.mp4",
       type: "video",
-      size: "109.9 MB",
-      date: "19/05/2025",
       url: "https://drive.google.com/file/d/12IRoOMGzvoFUIz8TPNvxR4XaEpO5nxfk/preview",
-      description: "วิธีการคัดเลือกเซลล์แบตเตอรี่ที่มีคุณภาพและเหมาะสมสำหรับการใช้งาน",
+      description:
+        "วิธีการคัดเลือกเซลล์แบตเตอรี่ที่มีคุณภาพและเหมาะสมสำหรับการใช้งาน",
       module: 1,
-      duration: "9:30"
+      duration: "2:56",
     },
     {
       id: 7,
       name: "การประกอบแบตเตอรี่.mp4",
       type: "video",
-      size: "425.3 MB",
-      date: "19/05/2025",
       url: "https://drive.google.com/file/d/16Oc9CCaIr5zR2rfS_8PPbRHr_VEvPiP-/preview",
       description: "ขั้นตอนการประกอบแบตเตอรี่อย่างละเอียดและปลอดภัยตามมาตรฐาน",
       module: 1,
-      duration: "25:45"
+      duration: "9:08",
     },
     {
       id: 8,
       name: "การทดสอบความเป็นฉนวน.mp4",
       type: "video",
-      size: "87.3 MB",
-      date: "19/05/2025",
       url: "https://drive.google.com/file/d/1lHUKkMr-GqA7EJmBZdTY39ij6sZZNJZz/preview",
       description: "วิธีการทดสอบความเป็นฉนวนของแบตเตอรี่เพื่อความปลอดภัย",
       module: 1,
-      duration: "7:15"
+      duration: "1:36",
     },
     {
       id: 9,
       name: "การทดสอบฟังก์ชั่นการป้องกัน.mp4",
       type: "video",
-      size: "86.7 MB",
-      date: "19/05/2025",
       url: "https://drive.google.com/file/d/1Yu3UMaU0tXRW-e35ANr2r5RfKDLkW8Sc/preview",
       description: "การทดสอบฟังก์ชั่นการป้องกันของระบบแบตเตอรี่ไฟฟ้าแรงดันสูง",
       module: 1,
-      duration: "7:20"
+      duration: "2:00",
     },
-    
   ];
 
   // กรองไฟล์ตามแท็บที่เลือกและคำค้นหา
   const filteredFiles = files.filter((file) => {
     // กรองตามแท็บ
-    if (activeTab === "documents" && (file.type === "pdf" || file.type === "doc")) {
+    if (
+      activeTab === "documents" &&
+      (file.type === "pdf" || file.type === "doc")
+    ) {
       return file.name.toLowerCase().includes(searchQuery.toLowerCase());
     } else if (activeTab === "videos" && file.type === "video") {
       return file.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -176,8 +157,8 @@ export default function FilesPage() {
       <section className="bg-blue-50 p-6 rounded-lg">
         <h1 className="text-3xl font-bold mb-4">ไฟล์เอกสารและวิดีโอการสอน</h1>
         <p className="text-lg mb-6">
-          เอกสารและวิดีโอประกอบการเรียนรู้เกี่ยวกับการประกอบแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ 4 
-          รวมถึงมาตรฐานอาชีพและคุณวุฒิวิชาชีพ
+          เอกสารและวิดีโอประกอบการเรียนรู้เกี่ยวกับการประกอบแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ
+          4 รวมถึงมาตรฐานอาชีพและคุณวุฒิวิชาชีพ
         </p>
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -247,20 +228,22 @@ export default function FilesPage() {
                   {getFileIcon(file.type)}
                   <div className="ml-4 flex-1">
                     <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-                      <h3 className="text-lg font-medium text-gray-900">{file.name}</h3>
+                      <h3 className="text-lg font-medium text-gray-900">
+                        {file.name}
+                      </h3>
                       <div className="flex items-center space-x-2 mt-2 md:mt-0">
-                        <span className="text-sm text-gray-500">{file.date}</span>
-                        <span className="text-sm text-gray-500">•</span>
-                        <span className="text-sm text-gray-500">{file.size}</span>
                         {file.duration && (
                           <>
-                            <span className="text-sm text-gray-500">•</span>
-                            <span className="text-sm text-gray-500">{file.duration}</span>
+                            <span className="text-sm text-gray-500">
+                              {file.duration}
+                            </span>
                           </>
                         )}
                       </div>
                     </div>
-                    <p className="mt-1 text-sm text-gray-600">{file.description}</p>
+                    <p className="mt-1 text-sm text-gray-600">
+                      {file.description}
+                    </p>
                     <div className="mt-3 flex items-center justify-between">
                       <div>
                         {file.module && (
@@ -314,14 +297,8 @@ export default function FilesPage() {
           <div>
             <strong>วิดีโอการสอน:</strong> 9 วิดีโอ
           </div>
-          <div>
-            <strong>ขนาดไฟล์รวม:</strong> ประมาณ 1.3 GB
-          </div>
-          <div>
-            <strong>ระยะเวลาวิดีโอรวม:</strong> ประมาณ 1 ชั่วโมง 30 นาที
-          </div>
         </div>
       </div>
     </div>
   );
-} 
+}

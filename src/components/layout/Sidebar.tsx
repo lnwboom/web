@@ -211,6 +211,19 @@ interface SidebarProps {
   closeSidebar: () => void;
 }
 
+// Helper to decode JWT payload (no verify, just decode)
+function decodeToken(token: string) {
+  try {
+    const payload = token.split(".")[1];
+    const base64 = payload.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(escape(atob(base64)));
+    const decoded = JSON.parse(jsonPayload);
+    return decoded;
+  } catch {
+    return null;
+  }
+}
+
 const menuItems: MenuItem[] = [
   { name: "หน้าหลัก", path: "/", icon: <HomeIcon /> },
   {
@@ -219,20 +232,15 @@ const menuItems: MenuItem[] = [
     subItems: [
       { name: "แบบทดสอบก่อนเรียน", path: "/assessment/pretest" },
       { name: "แบบทดสอบหลังเรียน", path: "/assessment/posttest" },
-      { name: "แบบฝึกหัด", path: "/assessment/exercise" },
     ],
   },
   {
     name: "บทเรียน",
     icon: <LearnIcon />,
-    subItems: [
-      { name: "บทที่ 1: ความรู้พื้นฐาน", path: "/learn" },
-      { name: "บทที่ 3: การบำรุงรักษา", path: "/learn/chapter3" },
-    ],
+    path: "/learn",
   },
   { name: "คะแนน", path: "/score", icon: <ScoreIcon /> },
   { name: "ไฟล์", icon: <FilesIcon />, path: "/files" },
-  { name: "โปรไฟล์", path: "/profile", icon: <ProfileIcon /> },
   { name: "ผู้จัดทำ", path: "/creator", icon: <CreatorIcon /> },
 ];
 
@@ -284,6 +292,22 @@ const MobileNavigation: React.FC<{
     [key: string]: boolean;
   }>({});
   const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const [userInfo, setUserInfo] = useState<{
+    name?: string;
+    email?: string;
+  } | null>(null);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      const token = localStorage.getItem("token");
+      if (token) {
+        const decoded = decodeToken(token);
+        setUserInfo({ name: decoded?.name, email: decoded?.email });
+      }
+    } else {
+      setUserInfo(null);
+    }
+  }, [isLoggedIn]);
 
   const toggleDropdown = (menuName: string) => {
     setOpenDropdowns((prev) => ({ ...prev, [menuName]: !prev[menuName] }));
@@ -443,6 +467,34 @@ const MobileNavigation: React.FC<{
                     )}
                   </li>
                 ))}
+                {/* Profile bar: only show if logged in */}
+                {isLoggedIn && (
+                  <li>
+                    <Link
+                      href="/profile"
+                      className={`flex items-center py-4 px-6 rounded-xl transition-all duration-200 group transform hover:translate-x-2 ${
+                        pathname === "/profile"
+                          ? "bg-blue-600 text-white font-medium border-l-4 border-white"
+                          : "text-white hover:bg-blue-700 hover:text-blue-100"
+                      }`}
+                      onClick={closeSidebar}
+                    >
+                      <span className="transition-colors duration-200 text-blue-200 group-hover:text-blue-100">
+                        <ProfileIcon />
+                      </span>
+                      <span className="ml-4 font-medium text-lg">
+                        โปรไฟล์
+                        {userInfo && (
+                          <span className="block text-xs text-blue-100 font-normal">
+                            {userInfo.name || "-"}
+                            <br />
+                            {userInfo.email || "-"}
+                          </span>
+                        )}
+                      </span>
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
@@ -501,6 +553,22 @@ const DesktopSidebar: React.FC<
   }>({});
   const pathname = usePathname();
   const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const [userInfo, setUserInfo] = useState<{
+    name?: string;
+    email?: string;
+  } | null>(null);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      const token = localStorage.getItem("token");
+      if (token) {
+        const decoded = decodeToken(token);
+        setUserInfo({ name: decoded?.name, email: decoded?.email });
+      }
+    } else {
+      setUserInfo(null);
+    }
+  }, [isLoggedIn]);
 
   // รีเซ็ต dropdowns เมื่อ sidebar ปิด
   useEffect(() => {
@@ -622,6 +690,35 @@ const DesktopSidebar: React.FC<
       {/* Bottom Navigation */}
       <nav className="mb-4">
         <ul>
+          {/* Only show Profile if logged in */}
+          {isLoggedIn && (
+            <li>
+              <Link
+                href="/profile"
+                className={`flex items-center px-4 py-3 my-1 rounded-lg transition-colors duration-200 ${
+                  pathname === "/profile"
+                    ? "bg-blue-600 text-white shadow"
+                    : "hover:bg-blue-700 text-white"
+                } ${!isSidebarOpen && "justify-center"}`}
+              >
+                <span className="mr-3">
+                  <ProfileIcon />
+                </span>
+                {isSidebarOpen && (
+                  <span>
+                    {userInfo && (
+                      <span className="block text-xs text-blue-100 font-normal">
+                        {userInfo.name || "-"}
+                        <br />
+                        {userInfo.email || "-"}
+                      </span>
+                    )}
+                  </span>
+                )}
+              </Link>
+            </li>
+          )}
+          {/* Other menu items */}
           {menuItems.slice(5).map((item) => (
             <li key={item.name}>
               <Link

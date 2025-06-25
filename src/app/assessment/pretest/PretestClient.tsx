@@ -4,6 +4,19 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import useAuthGuard from "@/hooks/useAuthGuard";
 
+// Helper to decode JWT payload (no verify, just decode)
+function decodeToken(token: string) {
+  try {
+    const payload = token.split(".")[1];
+    const base64 = payload.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(escape(atob(base64)));
+    const decoded = JSON.parse(jsonPayload);
+    return decoded;
+  } catch {
+    return null;
+  }
+}
+
 interface Question {
   id: number;
   text: string;
@@ -16,6 +29,7 @@ export default function PretestPage() {
   const { user, loading } = useAuthGuard();
   const searchParams = useSearchParams();
   const testType = searchParams.get("type") || "pre"; // 'pre' or 'post'
+  const [userName, setUserName] = useState<string>("");
 
   // จำลองคำถามแบบทดสอบก่อนเรียน
   const questions: Question[] = [
@@ -246,6 +260,13 @@ export default function PretestPage() {
   const [preTestScore, setPreTestScore] = useState<number | null>(null);
 
   useEffect(() => {
+    // Get user name from token
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decoded = decodeToken(token);
+      setUserName(decoded?.name || "");
+    }
+
     // Fetch previous scores if user is logged in
     const fetchScores = async () => {
       if (!user) return;
@@ -322,6 +343,15 @@ export default function PretestPage() {
         <h1 className="text-2xl font-bold text-center mb-6">
           {testType === "pre" ? "ผลการทดสอบก่อนเรียน" : "ผลการทดสอบหลังเรียน"}
         </h1>
+
+        {userName && (
+          <div className="text-center mb-4">
+            <p className="text-lg text-gray-600">
+              ผู้ทำแบบทดสอบ:{" "}
+              <span className="font-semibold text-blue-600">{userName}</span>
+            </p>
+          </div>
+        )}
 
         <div className="text-center mb-8">
           <div className="text-5xl font-bold text-blue-600 mb-2">
