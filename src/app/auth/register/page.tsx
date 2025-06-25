@@ -55,9 +55,9 @@ export default function RegisterPage() {
           data.message || "เกิดข้อผิดพลาดในการลงทะเบียน กรุณาลองใหม่อีกครั้ง"
         );
       }
-    } catch (error) {
+    } catch {
       setIsLoading(false);
-      console.error("เกิดข้อผิดพลาดในการลงทะเบียน กรุณาลองใหม่อีกครั้ง");
+      console.error("เกิดข้อผิดพลาดในกระบวนการลงทะเบียน กรุณาลองใหม่อีกครั้ง");
     }
   };
 

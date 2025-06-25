@@ -6,10 +6,11 @@ if (!MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable');
 }
 
-let cached = (globalThis as Record<string, any>).mongoose;
+let cached = (globalThis as { mongoose?: { conn: unknown; promise: Promise<typeof import('mongoose')> | null } }).mongoose;
 
 if (!cached) {
-  cached = (globalThis as Record<string, any>).mongoose = { conn: null, promise: null };
+  cached = { conn: null, promise: null };
+  (globalThis as { mongoose?: { conn: unknown; promise: Promise<typeof import('mongoose')> | null } }).mongoose = cached;
 }
 
 let dbConnected = false;
@@ -28,6 +29,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 async function dbConnect() {
+  if (!cached) throw new Error('Mongoose cache is undefined');
   if (cached.conn) return cached.conn;
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI, {

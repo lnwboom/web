@@ -49,9 +49,11 @@ export default function LoginPage() {
           data.message || "เกิดข้อผิดพลาดในการเข้าสู่ระบบ กรุณาลองใหม่อีกครั้ง"
         );
       }
-    } catch (error) {
+    } catch {
       setIsLoading(false);
-      console.error("เกิดข้อผิดพลาดในการเข้าสู่ระบบ กรุณาลองใหม่อีกครั้ง");
+      console.error(
+        "เกิดข้อผิดพลาดในกระบวนการเข้าสู่ระบบ กรุณาลองใหม่อีกครั้ง"
+      );
     }
   };
 
