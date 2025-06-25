@@ -22,9 +22,6 @@ interface ModuleProgress {
 
 export default function ScorePage() {
   const { user, loading } = useAuthGuard();
-  const [activeTab, setActiveTab] = useState<"scores" | "certificate">(
-    "scores"
-  );
 
   if (loading) return <div>กำลังโหลด...</div>;
   if (!user) return null;
@@ -100,54 +97,6 @@ export default function ScorePage() {
       passed: true,
     },
   ];
-
-  // ข้อมูลความคืบหน้าของโมดูล
-  const moduleProgress: ModuleProgress[] = [
-    {
-      id: 1,
-      title: "บทนำสู่แบตเตอรี่ไฟฟ้าแรงดันสูง",
-      progress: 100,
-      completed: true,
-    },
-    {
-      id: 2,
-      title: "ความปลอดภัยในการทำงานกับแบตเตอรี่แรงดันสูง",
-      progress: 100,
-      completed: true,
-    },
-    {
-      id: 3,
-      title: "ส่วนประกอบของแบตเตอรี่แรงดันสูง",
-      progress: 100,
-      completed: true,
-    },
-    {
-      id: 4,
-      title: "ขั้นตอนการประกอบแบตเตอรี่",
-      progress: 100,
-      completed: true,
-    },
-    {
-      id: 5,
-      title: "การทดสอบและตรวจสอบคุณภาพ",
-      progress: 100,
-      completed: true,
-    },
-  ];
-
-  // ตรวจสอบว่าผ่านเกณฑ์ได้รับใบรับรองหรือไม่
-  const hasCertificate = testScores.some(
-    (score) => score.name === "แบบทดสอบหลังเรียน" && score.passed
-  );
-
-  // คำนวณคะแนนเฉลี่ยรวม
-  const calculateAverageScore = () => {
-    const totalScore = testScores.reduce(
-      (sum, test) => sum + (test.score / test.totalQuestions) * 100,
-      0
-    );
-    return (totalScore / testScores.length).toFixed(2);
-  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen  py-12">
