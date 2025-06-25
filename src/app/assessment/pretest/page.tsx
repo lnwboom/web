@@ -244,7 +244,6 @@ export default function PretestPage() {
   const [showResults, setShowResults] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [preTestScore, setPreTestScore] = useState<number | null>(null);
-  const [postTestScore, setPostTestScore] = useState<number | null>(null);
 
   useEffect(() => {
     // Fetch previous scores if user is logged in
@@ -256,7 +255,6 @@ export default function PretestPage() {
       if (res.ok) {
         const data = await res.json();
         setPreTestScore(data.preTestScore?.score ?? null);
-        setPostTestScore(data.postTestScore?.score ?? null);
       }
     };
     fetchScores();

@@ -1,24 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
 import useAuthGuard from "@/hooks/useAuthGuard";
-
-interface TestScore {
-  id: number;
-  name: string;
-  score: number;
-  totalQuestions: number;
-  date: string;
-  passed: boolean;
-}
-
-interface ModuleProgress {
-  id: number;
-  title: string;
-  progress: number;
-  completed: boolean;
-}
 
 export default function ScorePage() {
   const { user, loading } = useAuthGuard();
@@ -53,50 +35,6 @@ export default function ScorePage() {
       ? "bg-green-100 text-green-800"
       : "bg-red-100 text-red-800";
   };
-
-  // ข้อมูลคะแนนการทดสอบ
-  const testScores: TestScore[] = [
-    {
-      id: 1,
-      name: "แบบทดสอบก่อนเรียน",
-      score: 6,
-      totalQuestions: 10,
-      date: "15/03/2023",
-      passed: true,
-    },
-    {
-      id: 2,
-      name: "แบบทดสอบหลังเรียนโมดูล 1",
-      score: 8,
-      totalQuestions: 10,
-      date: "18/03/2023",
-      passed: true,
-    },
-    {
-      id: 3,
-      name: "แบบทดสอบหลังเรียนโมดูล 2",
-      score: 9,
-      totalQuestions: 10,
-      date: "20/03/2023",
-      passed: true,
-    },
-    {
-      id: 4,
-      name: "แบบทดสอบหลังเรียนโมดูล 3",
-      score: 7,
-      totalQuestions: 10,
-      date: "22/03/2023",
-      passed: true,
-    },
-    {
-      id: 5,
-      name: "แบบทดสอบหลังเรียน",
-      score: 42,
-      totalQuestions: 50,
-      date: "25/03/2023",
-      passed: true,
-    },
-  ];
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen  py-12">

@@ -4,7 +4,6 @@ import React, { ReactNode, useContext, createContext } from "react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 
 // ไอคอนสำหรับเมนู
 const HomeIcon = () => (

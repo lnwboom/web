@@ -12,7 +12,6 @@ export default function RegisterPage() {
     password: "",
     confirmPassword: "",
   });
-  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,11 +24,9 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
 
     // ตรวจสอบรหัสผ่านตรงกัน
     if (formData.password !== formData.confirmPassword) {
-      setError("รหัสผ่านไม่ตรงกัน กรุณาตรวจสอบอีกครั้ง");
       return;
     }
 
@@ -54,25 +51,19 @@ export default function RegisterPage() {
       if (response.ok) {
         router.push("/auth/login");
       } else {
-        setError(
+        console.error(
           data.message || "เกิดข้อผิดพลาดในการลงทะเบียน กรุณาลองใหม่อีกครั้ง"
         );
       }
     } catch (error) {
       setIsLoading(false);
-      setError("เกิดข้อผิดพลาดในการลงทะเบียน กรุณาลองใหม่อีกครั้ง");
+      console.error("เกิดข้อผิดพลาดในการลงทะเบียน กรุณาลองใหม่อีกครั้ง");
     }
   };
 
   return (
     <div className="max-w-md mx-auto my-12 p-8 bg-white rounded-lg shadow-md">
       <h1 className="text-2xl font-bold text-center mb-6">ลงทะเบียน</h1>
-
-      {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-          {error}
-        </div>
-      )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
