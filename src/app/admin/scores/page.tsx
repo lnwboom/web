@@ -57,7 +57,7 @@ export default function AdminScoresPage() {
       } else {
         setMessage("ไม่สามารถโหลดข้อมูลผู้ใช้ได้");
       }
-    } catch (error) {
+    } catch {
       setMessage("เกิดข้อผิดพลาดในการโหลดข้อมูล");
     } finally {
       setLoadingUsers(false);
@@ -106,7 +106,7 @@ export default function AdminScoresPage() {
         const data = await response.json();
         setMessage(data.message || "เกิดข้อผิดพลาด");
       }
-    } catch (error) {
+    } catch {
       setMessage("เกิดข้อผิดพลาดในการอัปเดต");
     }
   };
@@ -114,11 +114,6 @@ export default function AdminScoresPage() {
   const handleCancel = () => {
     setEditingUser(null);
     setEditForm({ preTestScore: "", postTestScore: "" });
-  };
-
-  const formatDate = (dateStr?: string) => {
-    if (!dateStr) return "-";
-    return new Date(dateStr).toLocaleDateString("th-TH");
   };
 
   const getStatus = (score?: number) => {

@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import User from '@/models/User';
-import jwt from 'jsonwebtoken';
-
-const JWT_SECRET = process.env.JWT_SECRET || 'changeme';
 
 // Helper function to decode JWT token
 function decodeToken(token: string) {
@@ -74,7 +71,7 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ message: 'User ID is required' }, { status: 400 });
     }
     
-    const updateData: any = {};
+    const updateData: Record<string, unknown> = {};
     if (preTestScore !== undefined) {
       updateData.preTestScore = preTestScore;
     }

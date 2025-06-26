@@ -45,7 +45,7 @@ export default function AdminUsersPage() {
       } else {
         setMessage("ไม่สามารถโหลดข้อมูลผู้ใช้ได้");
       }
-    } catch (error) {
+    } catch {
       setMessage("เกิดข้อผิดพลาดในการโหลดข้อมูล");
     } finally {
       setLoadingUsers(false);
@@ -77,7 +77,7 @@ export default function AdminUsersPage() {
         const data = await response.json();
         setMessage(data.message || "เกิดข้อผิดพลาด");
       }
-    } catch (error) {
+    } catch {
       setMessage("เกิดข้อผิดพลาดในการอัปเดต");
     }
   };
