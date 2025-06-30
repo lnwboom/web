@@ -21,10 +21,9 @@ export default function CreatorPage() {
       name: "ทิพวัลย์ โทวงษ์",
       role: "64080502019",
       image: "/images/n.jpg",
-      bio: "คณะ : ครุศาสตร์อุตสาหกรรมและเทคโนโลยี มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี สาขา : ครุศาสตร์เครื่องกล ",
+      bio: "ครุศาสตร์อุตสาหกรรมและเทคโนโลยี มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี สาขาครุศาสตร์เครื่องกล ",
       contact: {
         email: "tippavan6748@gmail.com",
-       
       },
     },
     {
@@ -32,7 +31,7 @@ export default function CreatorPage() {
       name: "สิริกร ปันชัย",
       role: "64080502024",
       image: "/images/a.jpg",
-      bio: "คณะ : ครุศาสตร์อุตสาหกรรมและเทคโนโลยี มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี สาขา : ครุศาสตร์เครื่องกล ",
+      bio: "ครุศาสตร์อุตสาหกรรมและเทคโนโลยี มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี สาขาครุศาสตร์เครื่องกล ",
       contact: {
         email: "sirikonpanchai@gmail.com",
       },
@@ -42,19 +41,9 @@ export default function CreatorPage() {
   // ข้อมูลองค์กรที่สนับสนุน
   const organizations = [
     {
-      name: "สถาบันพัฒนาฝีมือแรงงาน",
-      logo: "https://www.dsd.go.th/Style%20Library/images/logo.png",
-      website: "https://example.org/institute",
-    },
-    {
-      name: "สมาคมยานยนต์ไฟฟ้าไทย",
-      logo: "https://evat.or.th/wp-content/uploads/2019/08/EVAT-Logo-for-web.png",
-      website: "https://example.org/ev-association",
-    },
-    {
-      name: "บริษัท พลังงานสะอาด จำกัด",
-      logo: "https://images.unsplash.com/photo-1618004912476-29818d81ae2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80",
-      website: "https://example.org/clean-energy",
+      name: "สาขาวิชาครุศาสตร์เครื่องกล\nคณะครุศาสตร์อุตสาหกรรมและเทคโนโลยีพระจอมเกล้าธนบุรี",
+      logo: "/images/logoDepartment.png",
+      website: "https://www.kmutt.ac.th/",
     },
   ];
 
@@ -89,7 +78,14 @@ export default function CreatorPage() {
                 <div className="md:w-2/3 p-6">
                   <h3 className="text-xl font-semibold mb-1">{creator.name}</h3>
                   <p className="text-blue-600 mb-3">{creator.role}</p>
-                  <p className="text-gray-600 mb-4">{creator.bio}</p>
+                  <span style={{ whiteSpace: "pre-line" }}>
+                    {creator.bio.split("\n").map((line, idx) => (
+                      <span key={idx}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
+                  </span>
 
                   {creator.contact && (
                     <div className="space-y-1">
@@ -190,7 +186,14 @@ export default function CreatorPage() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
-              <h3 className="text-lg font-semibold mb-2">{org.name}</h3>
+              <h3 className="text-lg font-semibold mb-2">
+                {org.name.split("\n").map((line, idx) => (
+                  <span key={idx}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
+              </h3>
               <a
                 href={org.website}
                 target="_blank"
@@ -229,7 +232,7 @@ export default function CreatorPage() {
               href="mailto:contact@example.com"
               className="text-blue-600 hover:underline"
             >
-             tippavan6748@gmail.com
+              tippavan6748@gmail.com
             </a>
           </div>
           <div className="flex items-center">

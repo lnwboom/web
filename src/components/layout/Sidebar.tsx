@@ -363,14 +363,19 @@ const MobileNavigation: React.FC<{
       <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-50 h-16 shadow-lg">
         <Link href="/" className="text-xl font-bold flex items-center">
           <Image
-            src="/images/battery.png"
+            src="/images/LogoKmutt.png"
             alt="Logo"
-            width={32}
+            width={50}
             height={32}
             className="h-8 mr-2"
           />
-          <span className="hidden sm:block">แบตเตอรี่ไฟฟ้า</span>
-          <span className="sm:hidden">แบตเตอรี่</span>
+          <Image
+            src="/images/logoDepartment.png"
+            alt="Logo"
+            width={60}
+            height={32}
+            className="h-8 mr-2"
+          />
         </Link>
 
         {/* Toggle Menu Button */}
@@ -663,16 +668,22 @@ const DesktopSidebar: React.FC<
       >
         {isSidebarOpen && (
           <div className="flex items-center">
-            <Image
-              src="/images/battery.png"
-              alt="Logo"
-              width={32}
-              height={32}
-              className="h-8 mr-2"
-            />
-            <Link href="/" className="text-xl font-bold">
-              แบตเตอรี่ไฟฟ้า
-            </Link>
+            
+              <Image
+                src="/images/LogoKmutt.png"
+                alt="Logo"
+                width={50}
+                height={32}
+                className="h-8 mr-2"
+              />
+              <Image
+                src="/images/logoDepartment.png"
+                alt="Logo"
+                width={60}
+                height={32}
+                className="h-8 mr-2"
+              />
+          
           </div>
         )}
         <button
