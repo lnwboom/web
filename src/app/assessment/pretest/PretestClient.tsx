@@ -341,7 +341,7 @@ export default function PretestPage() {
 
     return (
       <div className="max-w-3xl mx-auto my-12 p-8 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-center mb-6">
+        <h1 className="text-2xl font-bold text-gray-900 text-center mb-6">
           {testType === "pre" ? "ผลการทดสอบก่อนเรียน" : "ผลการทดสอบหลังเรียน"}
         </h1>
 
@@ -349,19 +349,19 @@ export default function PretestPage() {
           <div className="text-center mb-4">
             <p className="text-lg text-gray-600">
               ผู้ทำแบบทดสอบ:{" "}
-              <span className="font-semibold text-blue-600">{userName}</span>
+              <span className="font-semibold text-blue-800">{userName}</span>
             </p>
           </div>
         )}
 
         <div className="text-center mb-8">
-          <div className="text-5xl font-bold text-blue-600 mb-2">
+          <div className="text-5xl font-bold text-blue-800 mb-2">
             {score} / {questions.length}
           </div>
-          <div className="text-xl">{percentage.toFixed(0)}%</div>
+          <div className="text-xl text-blue-900">{percentage.toFixed(0)}%</div>
 
           <div className="mt-4 p-4 bg-gray-100 rounded-lg">
-            <p className="text-lg">
+            <p className="text-lg text-gray-900">
               {percentage >= 80
                 ? "ยอดเยี่ยม! คุณมีความรู้พื้นฐานที่ดีมากเกี่ยวกับแบตเตอรี่ไฟฟ้าแรงดันสูง"
                 : percentage >= 60
@@ -393,13 +393,13 @@ export default function PretestPage() {
         ) : (
           <div className="flex flex-col items-center gap-4">
             <div className="bg-blue-50 p-4 rounded-lg">
-              <div>
+              <div className="text-blue-900">
                 คะแนนก่อนเรียน:{" "}
                 {preTestScore !== null
                   ? `${preTestScore} / ${questions.length}`
                   : "-"}
               </div>
-              <div>
+              <div className="text-blue-900">
                 คะแนนหลังเรียน: {score} / {questions.length}
               </div>
               {preTestScore !== null && (
@@ -427,11 +427,11 @@ export default function PretestPage() {
   return (
     <div className="max-w-3xl mx-auto my-12 p-8 bg-white rounded-lg shadow-md">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">แบบทดสอบก่อนเรียน</h1>
+        <h1 className="text-2xl font-bold text-gray-900">แบบทดสอบก่อนเรียน</h1>
       </div>
 
       <div className="mb-6 bg-gray-100 p-4 rounded-lg">
-        <div className="flex justify-between mb-2">
+        <div className="flex justify-between mb-2 text-blue-900">
           <span>ความคืบหน้า</span>
           <span>
             {currentQuestion + 1} / {questions.length}
@@ -448,7 +448,7 @@ export default function PretestPage() {
       </div>
 
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">
+        <h2 className="text-xl font-semibold text-blue-900 mb-4">
           {currentQuestion + 1}. {questions[currentQuestion].text}
         </h2>
         <div className="space-y-3">
@@ -474,7 +474,7 @@ export default function PretestPage() {
                     <div className="w-2 h-2 rounded-full bg-white"></div>
                   )}
                 </div>
-                <span>{option}</span>
+                <span className="text-gray-900">{option}</span>
               </div>
             </div>
           ))}

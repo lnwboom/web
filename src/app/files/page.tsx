@@ -155,8 +155,10 @@ export default function FilesPage() {
   return (
     <div className="space-y-6">
       <section className="bg-blue-50 p-6 rounded-lg">
-        <h1 className="text-3xl font-bold mb-4">ไฟล์เอกสารและวิดีโอการสอน</h1>
-        <p className="text-lg mb-6">
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">
+          ไฟล์เอกสารและวิดีโอการสอน
+        </h1>
+        <p className="text-lg text-gray-600 mb-6">
           เอกสารและวิดีโอประกอบการเรียนรู้เกี่ยวกับการประกอบแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ
           4 รวมถึงมาตรฐานอาชีพและคุณวุฒิวิชาชีพ
         </p>

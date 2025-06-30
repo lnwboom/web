@@ -103,8 +103,8 @@ export default function ProfilePage() {
   return (
     <div className="space-y-6">
       <section className="bg-blue-50 p-6 rounded-lg">
-        <h1 className="text-3xl font-bold mb-4">โปรไฟล์ของฉัน</h1>
-        <p className="text-lg mb-6">
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">โปรไฟล์ของฉัน</h1>
+        <p className="text-lg text-gray-600 mb-6">
           จัดการข้อมูลส่วนตัวและการตั้งค่าบัญชีของคุณ
         </p>
       </section>
@@ -257,7 +257,9 @@ export default function ProfilePage() {
                   ) : (
                     <div>
                       <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-xl font-semibold">ข้อมูลส่วนตัว</h2>
+                        <h2 className="text-xl font-semibold text-blue-900">
+                          ข้อมูลส่วนตัว
+                        </h2>
                         <button
                           onClick={() => setIsEditing(true)}
                           className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
@@ -268,22 +270,22 @@ export default function ProfilePage() {
                       <div className="space-y-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
-                            <h3 className="text-sm font-medium text-gray-500">
+                            <h3 className="text-sm font-medium text-blue-900">
                               ชื่อ-นามสกุล
                             </h3>
-                            <p className="mt-1">{user.name}</p>
+                            <p className="mt-1 text-gray-900">{user.name}</p>
                           </div>
                           <div>
-                            <h3 className="text-sm font-medium text-gray-500">
+                            <h3 className="text-sm font-medium text-blue-900">
                               อีเมล
                             </h3>
-                            <p className="mt-1">{user.email}</p>
+                            <p className="mt-1 text-gray-900">{user.email}</p>
                           </div>
                           <div>
-                            <h3 className="text-sm font-medium text-gray-500">
+                            <h3 className="text-sm font-medium text-blue-900">
                               URL รูปโปรไฟล์
                             </h3>
-                            <p className="mt-1 break-all">
+                            <p className="mt-1 break-all text-gray-900">
                               {user.profileImage}
                             </p>
                           </div>

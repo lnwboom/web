@@ -50,15 +50,15 @@ export default function CreatorPage() {
   return (
     <div className="space-y-8">
       <section className="bg-blue-50 p-6 rounded-lg">
-        <h1 className="text-3xl font-bold mb-4">ผู้จัดทำ</h1>
-        <p className="text-lg mb-6">
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">ผู้จัดทำ</h1>
+        <p className="text-lg text-gray-600 mb-6">
           ทีมผู้เชี่ยวชาญที่ร่วมกันพัฒนาหลักสูตรการประกอบแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ
           4
         </p>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-6">ทีมผู้จัดทำ</h2>
+        <h2 className="text-2xl font-bold text-blue-900 mb-6">ทีมผู้จัดทำ</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {creators.map((creator) => (
             <div
@@ -76,9 +76,14 @@ export default function CreatorPage() {
                   />
                 </div>
                 <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-semibold mb-1">{creator.name}</h3>
-                  <p className="text-blue-600 mb-3">{creator.role}</p>
-                  <span style={{ whiteSpace: "pre-line" }}>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                    {creator.name}
+                  </h3>
+                  <p className="text-blue-800 mb-3">{creator.role}</p>
+                  <span
+                    className="text-gray-600"
+                    style={{ whiteSpace: "pre-line" }}
+                  >
                     {creator.bio.split("\n").map((line, idx) => (
                       <span key={idx}>
                         {line}
@@ -170,7 +175,9 @@ export default function CreatorPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-6">องค์กรที่สนับสนุน</h2>
+        <h2 className="text-2xl font-bold text-blue-900 mb-6">
+          องค์กรที่สนับสนุน
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {organizations.map((org, index) => (
             <div
@@ -186,7 +193,7 @@ export default function CreatorPage() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
-              <h3 className="text-lg font-semibold mb-2">
+              <h3 className="text-lg font-semibold text-blue-900 mb-2">
                 {org.name.split("\n").map((line, idx) => (
                   <span key={idx}>
                     {line}
@@ -208,8 +215,8 @@ export default function CreatorPage() {
       </section>
 
       <section className="bg-gray-50 p-6 rounded-lg text-center">
-        <h2 className="text-2xl font-bold mb-4">ติดต่อเรา</h2>
-        <p className="text-lg mb-6">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">ติดต่อเรา</h2>
+        <p className="text-lg text-gray-600 mb-6">
           หากมีคำถามหรือข้อเสนอแนะเกี่ยวกับหลักสูตร กรุณาติดต่อเราได้ที่
         </p>
         <div className="flex flex-col md:flex-row justify-center items-center gap-6">
