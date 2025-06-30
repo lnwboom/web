@@ -21,8 +21,9 @@ function decodeToken(token: string) {
 interface Question {
   id: number;
   text: string;
-  options: string[];
+  options: (string | { text: string; image?: string })[];
   correctAnswer: number;
+  image?: string;
 }
 
 export default function PretestPage() {
@@ -104,11 +105,11 @@ export default function PretestPage() {
       id: 7,
       text: "สัญลักษณ์ใดต่อไปนี้เป็นสัญลักษณ์มาตรฐานที่ใช้เตือนอันตรายจากไฟฟ้าแรงดันสูง",
       options: [
-        "สัญลักษณ์ A",
-        "สัญลักษณ์ B",
-        "สัญลักษณ์ C",
-        "สัญลักษณ์ D",
-        "สัญลักษณ์ E",
+        { text: "A", image: "/images/7_1.jpg" },
+        { text: "B", image: "/images/7_2.jpg" },
+        { text: "C", image: "/images/7_3.jpg" },
+        { text: "D", image: "/images/7_4.jpg" },
+        { text: "E", image: "/images/7_5.jpg" },
       ],
       correctAnswer: 1,
     },
@@ -217,6 +218,7 @@ export default function PretestPage() {
     {
       id: 18,
       text: "จากภาพการแสดงผลของระบบจัดการแบตเตอรี่ (BMS) แบตเตอรี่เซลล์ใดในมอดูลมีแรงดันที่ต่ำที่สุด",
+      image: "/images/18.png",
       options: [
         "เซลล์ที่ 11",
         "เซลล์ที่ 12",
@@ -451,33 +453,55 @@ export default function PretestPage() {
         <h2 className="text-xl font-semibold text-blue-900 mb-4">
           {currentQuestion + 1}. {questions[currentQuestion].text}
         </h2>
+        {questions[currentQuestion].image && (
+          <div className="mb-4 flex justify-center">
+            <img
+              src={questions[currentQuestion].image}
+              alt="question visual"
+              className="max-h-80 object-contain"
+            />
+          </div>
+        )}
         <div className="space-y-3">
-          {questions[currentQuestion].options.map((option, index) => (
-            <div
-              key={index}
-              className={`p-3 border rounded-lg cursor-pointer transition ${
-                selectedAnswers[currentQuestion] === index
-                  ? "border-blue-500 bg-blue-50"
-                  : "border-gray-300 hover:border-blue-300"
-              }`}
-              onClick={() => handleAnswerSelect(index)}
-            >
-              <div className="flex items-center">
-                <div
-                  className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 ${
-                    selectedAnswers[currentQuestion] === index
-                      ? "border-blue-500 bg-blue-500"
-                      : "border-gray-400"
-                  }`}
-                >
-                  {selectedAnswers[currentQuestion] === index && (
-                    <div className="w-2 h-2 rounded-full bg-white"></div>
+          {questions[currentQuestion].options.map((option, index) => {
+            // รองรับทั้ง string และ object ที่มีรูป
+            const isObj = typeof option === "object" && option !== null;
+            return (
+              <div
+                key={index}
+                className={`p-3 border rounded-lg cursor-pointer transition ${
+                  selectedAnswers[currentQuestion] === index
+                    ? "border-blue-500 bg-blue-50"
+                    : "border-gray-300 hover:border-blue-300"
+                }`}
+                onClick={() => handleAnswerSelect(index)}
+              >
+                <div className="flex items-center">
+                  <div
+                    className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 ${
+                      selectedAnswers[currentQuestion] === index
+                        ? "border-blue-500 bg-blue-500"
+                        : "border-gray-400"
+                    }`}
+                  >
+                    {selectedAnswers[currentQuestion] === index && (
+                      <div className="w-2 h-2 rounded-full bg-white"></div>
+                    )}
+                  </div>
+                  {isObj && option.image && (
+                    <img
+                      src={option.image}
+                      alt={option.text}
+                      className="h-30 w-30 object-contain mr-2"
+                    />
                   )}
+                  <span className="text-gray-900">
+                    {isObj ? option.text : option}
+                  </span>
                 </div>
-                <span className="text-gray-900">{option}</span>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
