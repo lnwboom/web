@@ -6,7 +6,7 @@ import LayoutClient from "@/components/layout/LayoutClient";
 // We can keep this here because the file is still a server component by default,
 // and becomes a client component only when the "use client" directive is encountered.
 export const metadata: Metadata = {
-  title: "แบตเตอรี่ไฟฟ้าแรงดันสูงระดับ 4",
+  title: "การประกอบแบตเตอรี่แรงดันสูง",
   description: "เว็บไซต์สื่อการเรียนรู้เรื่องแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ 4",
 };
 

@@ -21,56 +21,57 @@ const Chapter1Page = () => {
 
   const videos: VideoItem[] = [
     {
-      id: "1BAZhYBTAtMwduH-EbEgb9j2H1L4BXrjF",
+      id: "1WRYwLq95lXL7Aw3wuxE8wROpETngwSue",
       title: "อุปกรณ์ป้องกันส่วนบุคคล",
       description:
-        "เรียนรู้เกี่ยวกับอุปกรณ์ป้องกันส่วนบุคคลที่จำเป็นสำหรับการทำงานกับแบตเตอรี่ไฟฟ้าแรงดันสูง",
+        "เรียนรู้เกี่ยวกับอุปกรณ์ป้องกันส่วนบุคคลที่จำเป็นสำหรับการประกอบแบตเตอรี่แรงดันสูง",
       duration: "7:15",
     },
     {
-      id: "12gfVG1nGILgZQI25YtcXzWnW6Py7rCTE",
+      id: "1AeHVYbih4IRvSoKncg5KrYwvQhJPgy0I",
       title: "เครื่องมือและอุปกรณ์วัดทางไฟฟ้า",
       description:
-        "แนะนำเครื่องมือและอุปกรณ์วัดทางไฟฟ้าที่ใช้ในการทำงานกับแบตเตอรี่ รวมถึงวิธีการใช้งานที่ถูกต้อง",
+        "แนะนำเครื่องมือและอุปกรณ์วัดทางไฟฟ้าที่ใช้สําหรับการประกอบแบตเตอรี่แรงดันสูง",
       duration: "3:53",
     },
     {
-      id: "1N7xnmKrVWRNWpbTL7mBU1n4QTamaYMeW",
+      id: "1_Be6cvIGeCCVEw_kgu_bIUIbzz5yLunw",
       title: "การจัดการพื้นที่ปฏิบัติงาน",
       description:
-        "วิธีการจัดการพื้นที่ปฏิบัติงานให้ปลอดภัยและมีประสิทธิภาพสำหรับการทำงานกับแบตเตอรี่",
+        "การจัดการพื้นที่ปฏิบัติงานตามหลักความปลอดภัยสําหรับการประกอบแบตเตอรี่แรงดันสูง",
       duration: "2:31",
     },
     {
-      id: "1rVndMG9bBm8miNqG3qRvwiY-cbizbnIe",
+      id: "1lK4BOX2msSobGLVXCyoKi8qL5Lch0AZE",
       title: "ทดสอบความจุของเซลล์แบตเตอรี่",
-      description:
-        "ขั้นตอนการทดสอบความจุของเซลล์แบตเตอรี่อย่างถูกต้องและปลอดภัย",
+      description: "ขั้นตอนการทดสอบความจุของเซลล์แบตเตอรี่",
       duration: "5:36",
     },
     {
-      id: "12IRoOMGzvoFUIz8TPNvxR4XaEpO5nxfk",
+      id: "1FE4NKD-1mrYjmtSPt8t-p8EHnwmDMg31",
       title: "การคัดเลือกเซลล์แบตเตอรี่",
       description:
-        "วิธีการคัดเลือกเซลล์แบตเตอรี่ที่มีคุณภาพและเหมาะสมสำหรับการใช้งาน",
+        "การคัดเลือกเซลล์แบตเตอรี่เพื่อจัดกลุ่มเซลล์แบตเตอรี่ตามคุณสมบัติสำหรับประกอบเป็นมอดูล",
       duration: "2:56",
     },
     {
-      id: "16Oc9CCaIr5zR2rfS_8PPbRHr_VEvPiP-",
+      id: "10iDr9hwc3Pww_zEAeqlps_0zhWa0Yua0",
       title: "การประกอบแบตเตอรี่",
-      description: "ขั้นตอนการประกอบแบตเตอรี่อย่างละเอียดและปลอดภัยตามมาตรฐาน",
+      description:
+        "ขั้นตอนการประกอบเซลล์แบตเตอรี่เป็นมอดูลพร้อมติดตั้งอุปกรณ์ BMS",
       duration: "9:08",
     },
     {
-      id: "1lHUKkMr-GqA7EJmBZdTY39ij6sZZNJZz",
+      id: "1OCq7HfJiX2QIEST73CLt2TEgrwBuKNg7",
       title: "การทดสอบความเป็นฉนวน",
-      description: "วิธีการทดสอบความเป็นฉนวนของแบตเตอรี่เพื่อความปลอดภัย",
+      description: "การทดสอบความเป็นฉนวนของผลิตภัณฑ์ได้ตามมาตรฐาน",
       duration: "1:36",
     },
     {
-      id: "1Yu3UMaU0tXRW-e35ANr2r5RfKDLkW8Sc",
+      id: "1SlI7gPAD9XlkilZSDXzjvpQ-KNp24tiU",
       title: "การทดสอบฟังก์ชั่นการป้องกัน",
-      description: "การทดสอบฟังก์ชั่นการป้องกันของระบบแบตเตอรี่ไฟฟ้าแรงดันสูง",
+      description:
+        "การทดสอบฟังก์ชั่นการป้องกันของระบบแบตเตอรี่แพ็คด้วยการทดสอบอุณหภูมิ",
       duration: "2:00",
     },
   ];
@@ -91,16 +92,14 @@ const Chapter1Page = () => {
                   const title = videos.find(
                     (v) => v.id === selectedVideo
                   )?.title;
-                  return idx !== -1 && title
-                    ? `บทที่ ${idx + 1} ${title}`
-                    : title;
+                  return idx !== -1 && title ? `${title}` : title;
                 })()
               : "กรุณาเลือกบทเรียน"}
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             {selectedVideo
               ? videos.find((v) => v.id === selectedVideo)?.description
-              : "เรียนรู้พื้นฐานการทำงานกับแบตเตอรี่ไฟฟ้าแรงดันสูง ครอบคลุมอุปกรณ์ป้องกันส่วนบุคคล เครื่องมือวัด การจัดการพื้นที่ปฏิบัติงาน และขั้นตอนการทำงานที่ปลอดภัยตามมาตรฐานอาชีพ"}
+              : "เรียนรู้การประกอบแบตเตอรี่แรงดันสูง ครอบคลุมอุปกรณ์ป้องกันส่วนบุคคล เครื่องมือวัด การจัดการพื้นที่ปฏิบัติงาน และขั้นตอนการทำงานที่ปลอดภัย"}
           </p>
         </div>
 

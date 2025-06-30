@@ -25,9 +25,9 @@ export default function FilesPage() {
       id: 2,
       name: "อุปกรณ์ป้องกันส่วนบุคคล.mp4",
       type: "video",
-      url: "https://drive.google.com/file/d/1BAZhYBTAtMwduH-EbEgb9j2H1L4BXrjF/preview",
+      url: "https://drive.google.com/file/d/1WRYwLq95lXL7Aw3wuxE8wROpETngwSue/preview",
       description:
-        "เรียนรู้เกี่ยวกับอุปกรณ์ป้องกันส่วนบุคคลที่จำเป็นสำหรับการทำงานกับแบตเตอรี่ไฟฟ้าแรงดันสูง",
+        "เรียนรู้เกี่ยวกับอุปกรณ์ป้องกันส่วนบุคคลที่จำเป็นสำหรับการประกอบแบตเตอรี่แรงดันสูง",
       module: 1,
       duration: "7:15",
     },
@@ -35,9 +35,9 @@ export default function FilesPage() {
       id: 3,
       name: "เครื่องมือและอุปกรณ์วัดทางไฟฟ้า.mp4",
       type: "video",
-      url: "https://drive.google.com/file/d/12gfVG1nGILgZQI25YtcXzWnW6Py7rCTE/preview",
+      url: "https://drive.google.com/file/d/1AeHVYbih4IRvSoKncg5KrYwvQhJPgy0I/preview",
       description:
-        "แนะนำเครื่องมือและอุปกรณ์วัดทางไฟฟ้าที่ใช้ในการทำงานกับแบตเตอรี่ รวมถึงวิธีการใช้งานที่ถูกต้อง",
+        "แนะนำเครื่องมือและอุปกรณ์วัดทางไฟฟ้าที่ใช้สําหรับการประกอบแบตเตอรี่แรงดันสูง",
       module: 1,
       duration: "3:53",
     },
@@ -45,9 +45,9 @@ export default function FilesPage() {
       id: 4,
       name: "การจัดการพื้นที่ปฏิบัติงาน.mp4",
       type: "video",
-      url: "https://drive.google.com/file/d/1N7xnmKrVWRNWpbTL7mBU1n4QTamaYMeW/preview",
+      url: "https://drive.google.com/file/d/1_Be6cvIGeCCVEw_kgu_bIUIbzz5yLunw/preview",
       description:
-        "วิธีการจัดการพื้นที่ปฏิบัติงานให้ปลอดภัยและมีประสิทธิภาพสำหรับการทำงานกับแบตเตอรี่",
+        "การจัดการพื้นที่ปฏิบัติงานตามหลักความปลอดภัยสําหรับการประกอบแบตเตอรี่แรงดันสูง",
       module: 1,
       duration: "2:31",
     },
@@ -55,9 +55,8 @@ export default function FilesPage() {
       id: 5,
       name: "ทดสอบความจุของเซลล์แบตเตอรี่.mp4",
       type: "video",
-      url: "https://drive.google.com/file/d/1rVndMG9bBm8miNqG3qRvwiY-cbizbnIe/preview",
-      description:
-        "ขั้นตอนการทดสอบความจุของเซลล์แบตเตอรี่อย่างถูกต้องและปลอดภัย",
+      url: "https://drive.google.com/file/d/1lK4BOX2msSobGLVXCyoKi8qL5Lch0AZE/preview",
+      description: "ขั้นตอนการทดสอบความจุของเซลล์แบตเตอรี่",
       module: 1,
       duration: "5:36",
     },
@@ -65,9 +64,9 @@ export default function FilesPage() {
       id: 6,
       name: "การคัดเลือกเซลล์แบตเตอรี่.mp4",
       type: "video",
-      url: "https://drive.google.com/file/d/12IRoOMGzvoFUIz8TPNvxR4XaEpO5nxfk/preview",
+      url: "https://drive.google.com/file/d/1FE4NKD-1mrYjmtSPt8t-p8EHnwmDMg31/preview",
       description:
-        "วิธีการคัดเลือกเซลล์แบตเตอรี่ที่มีคุณภาพและเหมาะสมสำหรับการใช้งาน",
+        "การคัดเลือกเซลล์แบตเตอรี่เพื่อจัดกลุ่มเซลล์แบตเตอรี่ตามคุณสมบัติสำหรับประกอบเป็นมอดูล",
       module: 1,
       duration: "2:56",
     },
@@ -75,8 +74,9 @@ export default function FilesPage() {
       id: 7,
       name: "การประกอบแบตเตอรี่.mp4",
       type: "video",
-      url: "https://drive.google.com/file/d/16Oc9CCaIr5zR2rfS_8PPbRHr_VEvPiP-/preview",
-      description: "ขั้นตอนการประกอบแบตเตอรี่อย่างละเอียดและปลอดภัยตามมาตรฐาน",
+      url: "https://drive.google.com/file/d/10iDr9hwc3Pww_zEAeqlps_0zhWa0Yua0/preview",
+      description:
+        "ขั้นตอนการประกอบเซลล์แบตเตอรี่เป็นมอดูลพร้อมติดตั้งอุปกรณ์ BMS",
       module: 1,
       duration: "9:08",
     },
@@ -84,8 +84,8 @@ export default function FilesPage() {
       id: 8,
       name: "การทดสอบความเป็นฉนวน.mp4",
       type: "video",
-      url: "https://drive.google.com/file/d/1lHUKkMr-GqA7EJmBZdTY39ij6sZZNJZz/preview",
-      description: "วิธีการทดสอบความเป็นฉนวนของแบตเตอรี่เพื่อความปลอดภัย",
+      url: "https://drive.google.com/file/d/1OCq7HfJiX2QIEST73CLt2TEgrwBuKNg7/preview",
+      description: "การทดสอบความเป็นฉนวนของผลิตภัณฑ์ได้ตามมาตรฐาน",
       module: 1,
       duration: "1:36",
     },
@@ -93,8 +93,9 @@ export default function FilesPage() {
       id: 9,
       name: "การทดสอบฟังก์ชั่นการป้องกัน.mp4",
       type: "video",
-      url: "https://drive.google.com/file/d/1Yu3UMaU0tXRW-e35ANr2r5RfKDLkW8Sc/preview",
-      description: "การทดสอบฟังก์ชั่นการป้องกันของระบบแบตเตอรี่ไฟฟ้าแรงดันสูง",
+      url: "https://drive.google.com/file/d/1SlI7gPAD9XlkilZSDXzjvpQ-KNp24tiU/preview",
+      description:
+        "การทดสอบฟังก์ชั่นการป้องกันของระบบแบตเตอรี่แพ็คด้วยการทดสอบอุณหภูมิ",
       module: 1,
       duration: "2:00",
     },
@@ -253,7 +254,7 @@ export default function FilesPage() {
                             href={`/learn`}
                             className="text-sm text-blue-600 hover:underline"
                           >
-                            เกี่ยวข้องกับบทเรียนที่ {file.module}
+                            เข้าสู่บทเรียน
                           </Link>
                         )}
                       </div>
