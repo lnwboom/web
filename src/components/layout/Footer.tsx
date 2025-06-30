@@ -15,10 +15,10 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">เกี่ยวกับเรา</h3>
             <p className="text-gray-300">
-              เว็บไซต์สื่อการศึกษาเกี่ยวกับการประกอบแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ 4
-              ที่ออกแบบมาเพื่อให้ความรู้และทดสอบความเข้าใจของผู้เรียน 
-              จัดทำโดย ทิพวัลย์ โทวงษ์ และ สิริกร ปันชัย 
-              สาขาวิชาครุศาสตร์เครื่องกล คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยีพระจอมเกล้าธนบุรี
+              บทเรียนอีเลิร์นนิง(E-learning) เรื่องการประกอบแบตเตอรี่แรงดันสูง
+              จัดทำโดย ทิพวัลย์ โทวงษ์ และ สิริกร ปันชัย
+              สาขาวิชาครุศาสตร์เครื่องกล
+              คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยีพระจอมเกล้าธนบุรี
             </p>
           </div>
           <div>
@@ -30,7 +30,10 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/assessment" className="text-gray-300 hover:text-white">
+                <Link
+                  href="/assessment"
+                  className="text-gray-300 hover:text-white"
+                >
                   แบบทดสอบ
                 </Link>
               </li>
@@ -50,15 +53,19 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">ติดต่อเรา</h3>
             <p className="text-gray-300">
               หากมีคำถามหรือข้อเสนอแนะ กรุณาติดต่อเราได้ที่อีเมล:
-              <a href="mailto:contact@example.com" className="text-blue-400 hover:underline ml-1">
-                contact@example.com
+              <a
+                href="mailto:contact@example.com"
+                className="text-blue-400 hover:underline ml-1"
+              >
+                tippavan6748@gmail.com
               </a>
             </p>
           </div>
         </div>
         <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
           <p>
-            &copy; {year ?? ""} การประกอบแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ 4. สงวนลิขสิทธิ์.
+            &copy; {year ?? ""} การประกอบแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ 4.
+            สงวนลิขสิทธิ์.
           </p>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-
 interface Creator {
   id: number;
   name: string;
@@ -19,26 +18,25 @@ export default function CreatorPage() {
   const creators: Creator[] = [
     {
       id: 1,
-      name: "นางสาวทิพวัลย์ โทวงษ์",
+      name: "ทิพวัลย์ โทวงษ์",
       role: "64080502019",
-      image: "https://vetzpetz.co.th/cdn/shop/articles/dog-g390ab7807_1280.jpg?v=1686298962",
+      image: "/images/n.jpg",
       bio: "คณะ : ครุศาสตร์อุตสาหกรรมและเทคโนโลยี มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี สาขา : ครุศาสตร์เครื่องกล ",
       contact: {
-        email: "somchai@example.com",
-        website: "https://example.com/somchai",
+        email: "tippavan6748@gmail.com",
+       
       },
     },
     {
       id: 2,
-      name: "นางสาวสมศรี มีสุข",
+      name: "สิริกร ปันชัย",
       role: "64080502024",
-      image: "https://vetzpetz.co.th/cdn/shop/articles/dog-g390ab7807_1280.jpg?v=1686298962",
+      image: "/images/a.jpg",
       bio: "คณะ : ครุศาสตร์อุตสาหกรรมและเทคโนโลยี มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี สาขา : ครุศาสตร์เครื่องกล ",
       contact: {
-        email: "somsri@example.com",
+        email: "sirikonpanchai@gmail.com",
       },
     },
-   
   ];
 
   // ข้อมูลองค์กรที่สนับสนุน
@@ -65,7 +63,8 @@ export default function CreatorPage() {
       <section className="bg-blue-50 p-6 rounded-lg">
         <h1 className="text-3xl font-bold mb-4">ผู้จัดทำ</h1>
         <p className="text-lg mb-6">
-          ทีมผู้เชี่ยวชาญที่ร่วมกันพัฒนาหลักสูตรการประกอบแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ 4
+          ทีมผู้เชี่ยวชาญที่ร่วมกันพัฒนาหลักสูตรการประกอบแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ
+          4
         </p>
       </section>
 
@@ -73,7 +72,10 @@ export default function CreatorPage() {
         <h2 className="text-2xl font-bold mb-6">ทีมผู้จัดทำ</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {creators.map((creator) => (
-            <div key={creator.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div
+              key={creator.id}
+              className="bg-white rounded-lg shadow-md overflow-hidden"
+            >
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 h-48 md:h-auto relative bg-gray-200">
                   <Image
@@ -88,7 +90,7 @@ export default function CreatorPage() {
                   <h3 className="text-xl font-semibold mb-1">{creator.name}</h3>
                   <p className="text-blue-600 mb-3">{creator.role}</p>
                   <p className="text-gray-600 mb-4">{creator.bio}</p>
-                  
+
                   {creator.contact && (
                     <div className="space-y-1">
                       {creator.contact.email && (
@@ -107,12 +109,15 @@ export default function CreatorPage() {
                               d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                             />
                           </svg>
-                          <a href={`mailto:${creator.contact.email}`} className="text-blue-600 hover:underline">
+                          <a
+                            href={`mailto:${creator.contact.email}`}
+                            className="text-blue-600 hover:underline"
+                          >
                             {creator.contact.email}
                           </a>
                         </div>
                       )}
-                      
+
                       {creator.contact.phone && (
                         <div className="flex items-center text-sm">
                           <svg
@@ -132,7 +137,7 @@ export default function CreatorPage() {
                           <span>{creator.contact.phone}</span>
                         </div>
                       )}
-                      
+
                       {creator.contact.website && (
                         <div className="flex items-center text-sm">
                           <svg
@@ -172,7 +177,10 @@ export default function CreatorPage() {
         <h2 className="text-2xl font-bold mb-6">องค์กรที่สนับสนุน</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {organizations.map((org, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6 text-center">
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-md p-6 text-center"
+            >
               <div className="h-24 relative mb-4">
                 <Image
                   src={org.logo}
@@ -217,8 +225,11 @@ export default function CreatorPage() {
                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
               />
             </svg>
-            <a href="mailto:contact@example.com" className="text-blue-600 hover:underline">
-              contact@example.com
+            <a
+              href="mailto:contact@example.com"
+              className="text-blue-600 hover:underline"
+            >
+             tippavan6748@gmail.com
             </a>
           </div>
           <div className="flex items-center">
@@ -242,4 +253,4 @@ export default function CreatorPage() {
       </section>
     </div>
   );
-} 
+}
