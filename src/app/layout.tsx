@@ -7,7 +7,7 @@ import LayoutClient from "@/components/layout/LayoutClient";
 // and becomes a client component only when the "use client" directive is encountered.
 export const metadata: Metadata = {
   title: "การประกอบแบตเตอรี่แรงดันสูง",
-  description: "เว็บไซต์สื่อการเรียนรู้เรื่องแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ 4",
+  description: "เว็บไซต์สื่อการเรียนรู้เรื่องแบตเตอรี่แรงดันสูง",
 };
 
 export default function RootLayout({

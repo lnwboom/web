@@ -100,7 +100,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              หลักสูตรการประกอบแบตเตอรี่ไฟฟ้าแรงดันสูง
+              หลักสูตรการประกอบแบตเตอรี่แรงดันสูง
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full"></div>
           </div>

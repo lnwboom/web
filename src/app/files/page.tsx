@@ -295,10 +295,7 @@ export default function FilesPage() {
         <h3 className="text-lg font-semibold text-blue-900 mb-3">สรุปข้อมูล</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm text-blue-800">
           <div>
-            <strong>เอกสาร PDF:</strong> 1 ไฟล์
-          </div>
-          <div>
-            <strong>วิดีโอการสอน:</strong> 9 วิดีโอ
+            <strong>วิดีโอการสอน:</strong> 8 วิดีโอ
           </div>
         </div>
       </div>

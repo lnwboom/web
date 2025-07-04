@@ -17,7 +17,6 @@ export default function StudyPage() {
       </h1>
       <p className="mb-8 text-gray-700">
         กรุณาศึกษาเนื้อหาทั้งหมดในบทเรียนให้ครบถ้วนก่อนที่จะทำแบบทดสอบหลังเรียน
-        เพื่อประเมินความรู้ที่ได้รับอย่างถูกต้อง
       </p>
       <button
         onClick={handleStudied}

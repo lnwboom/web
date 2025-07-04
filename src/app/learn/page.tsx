@@ -217,60 +217,7 @@ const Chapter1Page = () => {
           </div>
         </div>
 
-        {/* Learning Objectives */}
-        <div className="mt-12 bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            วัตถุประสงค์การเรียนรู้
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-3">
-                ความรู้ (Knowledge)
-              </h3>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  เข้าใจหลักการทำงานของแบตเตอรี่ไฟฟ้าแรงดันสูง
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  รู้จักอุปกรณ์ป้องกันส่วนบุคคลที่จำเป็น
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  เข้าใจเครื่องมือและอุปกรณ์วัดทางไฟฟ้า
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  รู้จักมาตรฐานความปลอดภัยในการทำงาน
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-3">
-                ทักษะ (Skills)
-              </h3>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  สามารถจัดการพื้นที่ปฏิบัติงานได้อย่างปลอดภัย
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  ทดสอบความจุและความเป็นฉนวนของแบตเตอรี่ได้
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  ประกอบและทดสอบแบตเตอรี่ได้อย่างถูกต้อง
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  ใช้เครื่องมือวัดทางไฟฟ้าได้อย่างถูกต้อง
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        
 
         {/* Course Information */}
         <div className="mt-8 bg-blue-50 rounded-lg p-6">
