@@ -423,7 +423,9 @@ export default function PretestPage() {
   return (
     <div className="max-w-3xl mx-auto my-12 p-8 bg-white rounded-lg shadow-md">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">แบบทดสอบก่อนเรียน</h1>
+        <h1 className="text-2xl font-bold text-gray-900">
+          {testType === "pre" ? "แบบทดสอบก่อนเรียน" : "แบบทดสอบหลังเรียน"}
+        </h1>
       </div>
 
       <div className="mb-6 bg-gray-100 p-4 rounded-lg">

@@ -31,6 +31,7 @@ export default function AdminScoresPage() {
     postTestScore: "",
   });
   const [message, setMessage] = useState("");
+  const [deletingUser, setDeletingUser] = useState<string | null>(null);
 
   useEffect(() => {
     if (!loading && user) {
@@ -116,15 +117,48 @@ export default function AdminScoresPage() {
     setEditForm({ preTestScore: "", postTestScore: "" });
   };
 
+  const handleDelete = async (userId: string, userName: string) => {
+    if (
+      !confirm(
+        `คุณแน่ใจหรือไม่ที่จะลบผู้ใช้ "${userName}"? การดำเนินการนี้ไม่สามารถยกเลิกได้`
+      )
+    ) {
+      return;
+    }
+
+    setDeletingUser(userId);
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(`/api/admin/scores?userId=${userId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        setMessage("ลบผู้ใช้สำเร็จ");
+        fetchUsers(); // Refresh data
+      } else {
+        const data = await response.json();
+        setMessage(data.message || "เกิดข้อผิดพลาดในการลบผู้ใช้");
+      }
+    } catch {
+      setMessage("เกิดข้อผิดพลาดในการลบผู้ใช้");
+    } finally {
+      setDeletingUser(null);
+    }
+  };
+
   const getStatus = (score?: number) => {
     if (!score) return "-";
-    const percent = (score / 20) * 100;
+    const percent = (score / 19) * 100;
     return percent >= 60 ? "ผ่าน" : "ไม่ผ่าน";
   };
 
   const getStatusColor = (score?: number) => {
     if (!score) return "bg-gray-200 text-gray-600";
-    const percent = (score / 20) * 100;
+    const percent = (score / 19) * 100;
     return percent >= 60
       ? "bg-green-100 text-green-800"
       : "bg-red-100 text-red-800";
@@ -174,7 +208,6 @@ export default function AdminScoresPage() {
                   <th className="px-6 py-3 text-center text-xs font-medium text-blue-700 uppercase tracking-wider">
                     หลังเรียน
                   </th>
-
                   <th className="px-6 py-3 text-center text-xs font-medium text-blue-700 uppercase tracking-wider">
                     การจัดการ
                   </th>
@@ -207,7 +240,7 @@ export default function AdminScoresPage() {
                         <input
                           type="number"
                           min="0"
-                          max="20"
+                          max="19"
                           value={editForm.preTestScore}
                           onChange={(e) =>
                             setEditForm((prev) => ({
@@ -221,7 +254,7 @@ export default function AdminScoresPage() {
                         <div>
                           <div className="text-sm font-medium text-gray-900">
                             {user.preTestScore
-                              ? `${user.preTestScore.score}/20`
+                              ? `${user.preTestScore.score}/19`
                               : "-"}
                           </div>
                           <span
@@ -239,7 +272,7 @@ export default function AdminScoresPage() {
                         <input
                           type="number"
                           min="0"
-                          max="20"
+                          max="19"
                           value={editForm.postTestScore}
                           onChange={(e) =>
                             setEditForm((prev) => ({
@@ -253,7 +286,7 @@ export default function AdminScoresPage() {
                         <div>
                           <div className="text-sm font-medium text-gray-900">
                             {user.postTestScore
-                              ? `${user.postTestScore.score}/20`
+                              ? `${user.postTestScore.score}/19`
                               : "-"}
                           </div>
                           <span
@@ -266,7 +299,6 @@ export default function AdminScoresPage() {
                         </div>
                       )}
                     </td>
-
                     <td className="px-6 py-4 whitespace-nowrap text-center">
                       {editingUser === user._id ? (
                         <div className="flex justify-center space-x-2">
@@ -284,12 +316,25 @@ export default function AdminScoresPage() {
                           </button>
                         </div>
                       ) : (
-                        <button
-                          onClick={() => handleEdit(user)}
-                          className="px-3 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
-                        >
-                          แก้ไข
-                        </button>
+                        <div className="flex justify-center space-x-2">
+                          <button
+                            onClick={() => handleEdit(user)}
+                            className="px-3 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
+                          >
+                            แก้ไข
+                          </button>
+                          <button
+                            onClick={() => handleDelete(user._id, user.name)}
+                            disabled={deletingUser === user._id}
+                            className={`px-3 py-1 text-white text-xs rounded ${
+                              deletingUser === user._id
+                                ? "bg-gray-400 cursor-not-allowed"
+                                : "bg-red-600 hover:bg-red-700"
+                            }`}
+                          >
+                            {deletingUser === user._id ? "กำลังลบ..." : "ลบ"}
+                          </button>
+                        </div>
                       )}
                     </td>
                   </tr>

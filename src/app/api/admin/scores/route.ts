@@ -102,4 +102,56 @@ export async function PUT(req: NextRequest) {
     console.error('Error updating user score:', error);
     return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
+}
+
+export async function DELETE(req: NextRequest) {
+  try {
+    await dbConnect();
+    
+    // Get token from Authorization header
+    const authHeader = req.headers.get('authorization');
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+    }
+    
+    const token = authHeader.substring(7);
+    const decoded = decodeToken(token);
+    
+    if (!decoded || decoded.role !== 'admin') {
+      return NextResponse.json({ message: 'Access denied. Admin only.' }, { status: 403 });
+    }
+    
+    // Get userId from query parameters
+    const { searchParams } = new URL(req.url);
+    const userId = searchParams.get('userId');
+    
+    if (!userId) {
+      return NextResponse.json({ message: 'User ID is required' }, { status: 400 });
+    }
+    
+    // Check if user exists and get user info before deletion
+    const user = await User.findById(userId);
+    if (!user) {
+      return NextResponse.json({ message: 'User not found' }, { status: 404 });
+    }
+    
+    // Prevent admin from deleting themselves
+    if (user.role === 'admin' && user._id.toString() === decoded.userId) {
+      return NextResponse.json({ message: 'Cannot delete your own admin account' }, { status: 400 });
+    }
+    
+    // Delete the user
+    await User.findByIdAndDelete(userId);
+    
+    return NextResponse.json({ 
+      message: 'User deleted successfully',
+      deletedUser: {
+        name: user.name,
+        email: user.email
+      }
+    }, { status: 200 });
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
+  }
 } 
