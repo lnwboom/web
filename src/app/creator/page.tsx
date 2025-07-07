@@ -21,9 +21,9 @@ export default function CreatorPage() {
       name: "ทิพวัลย์ โทวงษ์",
       role: "64080502019",
       image: "/images/n.jpg",
-      bio: "ครุศาสตร์อุตสาหกรรมและเทคโนโลยี มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี สาขาครุศาสตร์เครื่องกล ",
+      bio: "สาขาวิชาครุศาสตร์เครื่องกล คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี",
       contact: {
-        email: "tippavan6748@gmail.com",
+        email: "tippawan.towo@kmutt.ac.th",
       },
     },
     {
@@ -31,7 +31,7 @@ export default function CreatorPage() {
       name: "สิริกร ปันชัย",
       role: "64080502024",
       image: "/images/a.jpg",
-      bio: "ครุศาสตร์อุตสาหกรรมและเทคโนโลยี มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี สาขาครุศาสตร์เครื่องกล ",
+      bio: " สาขาวิชาครุศาสตร์เครื่องกล คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี",
       contact: {
         email: "sirikonpanchai@gmail.com",
       },
@@ -41,7 +41,7 @@ export default function CreatorPage() {
   // ข้อมูลองค์กรที่สนับสนุน
   const organizations = [
     {
-      name: "สาขาวิชาครุศาสตร์เครื่องกล\nคณะครุศาสตร์อุตสาหกรรมและเทคโนโลยีพระจอมเกล้าธนบุรี",
+      name: "สาขาวิชาครุศาสตร์เครื่องกล \nคณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี \nมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี",
       logo: "/images/logoDepartment.png",
       website: "https://www.kmutt.ac.th/",
     },
@@ -51,10 +51,7 @@ export default function CreatorPage() {
     <div className="space-y-8">
       <section className="bg-blue-50 p-6 rounded-lg">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">ผู้จัดทำ</h1>
-        <p className="text-lg text-gray-600 mb-6">
-          ทีมผู้เชี่ยวชาญที่ร่วมกันพัฒนาหลักสูตรการประกอบแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ
-          4
-        </p>
+        <p className="text-lg text-gray-600 mb-6"></p>
       </section>
 
       <section>
@@ -239,7 +236,7 @@ export default function CreatorPage() {
               href="mailto:contact@example.com"
               className="text-blue-600 hover:underline"
             >
-              tippavan6748@gmail.com
+              tippawan.towo@kmutt.ac.th
             </a>
           </div>
           <div className="flex items-center">

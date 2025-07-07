@@ -160,8 +160,7 @@ export default function FilesPage() {
           ไฟล์เอกสารและวิดีโอการสอน
         </h1>
         <p className="text-lg text-gray-600 mb-6">
-          เอกสารและวิดีโอประกอบการเรียนรู้เกี่ยวกับการประกอบแบตเตอรี่ไฟฟ้าแรงดันสูงระดับ
-          4 รวมถึงมาตรฐานอาชีพและคุณวุฒิวิชาชีพ
+          
         </p>
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">

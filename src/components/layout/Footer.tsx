@@ -17,7 +17,8 @@ const Footer = () => {
             <p className="text-gray-300">
               บทเรียนอีเลิร์นนิง(E-learning) เรื่องการประกอบแบตเตอรี่แรงดันสูง
               จัดทำโดย ทิพวัลย์ โทวงษ์ และ สิริกร ปันชัย
-              สาขาวิชาครุศาสตร์เครื่องกล คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
+              สาขาวิชาครุศาสตร์เครื่องกล คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี
+              มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
             </p>
           </div>
           <div>
@@ -56,16 +57,13 @@ const Footer = () => {
                 href="mailto:contact@example.com"
                 className="text-blue-400 hover:underline ml-1"
               >
-                tippavan6748@gmail.com
+                tippawan.towo@kmutt.ac.th
               </a>
             </p>
           </div>
         </div>
         <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-          <p>
-            &copy; {year ?? ""} การประกอบแบตเตอรี่แรงดันสูง.
-            สงวนลิขสิทธิ์.
-          </p>
+          <p>&copy; {year ?? ""} การประกอบแบตเตอรี่แรงดันสูง. สงวนลิขสิทธิ์.</p>
         </div>
       </div>
     </footer>
