@@ -38,6 +38,17 @@ export default function Home() {
               เริ่มเรียนเลย
             </Link>
           </div>
+          <div className="mt-6 flex justify-center">
+            <a
+              href="https://forms.gle/ZRdU28c3ZPav1ywu7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-green-500 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg flex items-center gap-2"
+            >
+              <span>⭐</span>
+              แบบประเมินความพึงพอใจจากการใช้งาน
+            </a>
+          </div>
         </div>
       </section>
 

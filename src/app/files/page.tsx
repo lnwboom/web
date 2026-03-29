@@ -15,12 +15,20 @@ interface FileItem {
 
 export default function FilesPage() {
   const [activeTab, setActiveTab] = useState<"all" | "documents" | "videos">(
-    "all"
+    "all",
   );
   const [searchQuery, setSearchQuery] = useState("");
 
   // ข้อมูลไฟล์
   const files: FileItem[] = [
+    {
+      id: 1,
+      name: "ใบความรู้_การประกอบแบตเตอรี่แรงดันสูง.pdf",
+      type: "pdf",
+      url: "/documents/Knowledge-Sheet-HV-Battery.pdf",
+      description:
+        "เอกสารความรู้เกี่ยวกับการประกอบแบตเตอรี่แรงดันสูง (Knowledge Sheet)",
+    },
     {
       id: 2,
       name: "อุปกรณ์ป้องกันส่วนบุคคล.mp4",
@@ -159,9 +167,7 @@ export default function FilesPage() {
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
           ไฟล์เอกสารและวิดีโอการสอน
         </h1>
-        <p className="text-lg text-gray-600 mb-6">
-          
-        </p>
+        <p className="text-lg text-gray-600 mb-6"></p>
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="flex space-x-2">
@@ -293,6 +299,9 @@ export default function FilesPage() {
       <div className="bg-blue-50 rounded-lg p-6">
         <h3 className="text-lg font-semibold text-blue-900 mb-3">สรุปข้อมูล</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm text-blue-800">
+          <div>
+            <strong>เอกสาร:</strong> 1 ไฟล์
+          </div>
           <div>
             <strong>วิดีโอการสอน:</strong> 8 วิดีโอ
           </div>
